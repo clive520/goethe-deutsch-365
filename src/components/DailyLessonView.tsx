@@ -12,6 +12,7 @@ import {
   Sparkles,
   CheckCircle2,
   BookmarkPlus,
+  BookmarkCheck,
   HelpCircle,
   Lightbulb,
   Languages,
@@ -29,7 +30,13 @@ interface Props {
   onSelectDay: (day: number) => void;
   user: UserProgress | null;
   onCompleteDay: (day: number, score: number) => void;
-  onSaveVocab: (word: string, meaning: string, article?: 'der' | 'die' | 'das') => void;
+  onSaveVocab: (
+    word: string,
+    meaning: string,
+    article?: 'der' | 'die' | 'das',
+    example?: string,
+    exampleTr?: string
+  ) => void;
 }
 
 type TabType = 'overview' | 'listening' | 'speaking' | 'reading' | 'quiz';
@@ -297,11 +304,31 @@ export const DailyLessonView: React.FC<Props> = ({
                       {voc.example}
                     </p>
                     <button
-                      onClick={() => onSaveVocab(voc.word, voc.meaning, voc.article)}
-                      className="text-indigo-600 hover:text-indigo-800 p-1"
-                      title="收藏至生詞本"
+                      onClick={() =>
+                        onSaveVocab(
+                          voc.word,
+                          voc.meaning,
+                          voc.article,
+                          voc.example,
+                          voc.exampleTr
+                        )
+                      }
+                      className={`p-1.5 rounded-lg transition flex items-center space-x-1 ${
+                        user?.savedVocabIds?.includes(voc.word)
+                          ? 'bg-emerald-100 text-emerald-700 hover:bg-red-50 hover:text-red-600'
+                          : 'text-slate-400 hover:text-indigo-600 hover:bg-slate-100'
+                      }`}
+                      title={
+                        user?.savedVocabIds?.includes(voc.word)
+                          ? '已收藏（點擊取消收藏）'
+                          : '收藏至生詞本'
+                      }
                     >
-                      <BookmarkPlus className="w-4 h-4" />
+                      {user?.savedVocabIds?.includes(voc.word) ? (
+                        <BookmarkCheck className="w-4 h-4 fill-emerald-600" />
+                      ) : (
+                        <BookmarkPlus className="w-4 h-4" />
+                      )}
                     </button>
                   </div>
                 </div>

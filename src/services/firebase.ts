@@ -170,7 +170,8 @@ class FirebaseService {
       streak: 7,
       lastActiveDate: new Date().toISOString().split('T')[0],
       completedDays: [1, 2, 3],
-      savedVocabIds: ['w1', 'w3'],
+      savedVocabIds: [],
+      savedWords: [],
       quizScores: { 1: 100, 2: 95, 3: 100 },
       currentDay: 4,
     };
@@ -266,6 +267,7 @@ class FirebaseService {
       lastActiveDate: today,
       completedDays: [],
       savedVocabIds: [],
+      savedWords: [],
       quizScores: {},
       currentDay: 1,
     };

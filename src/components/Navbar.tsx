@@ -241,11 +241,18 @@ export const Navbar: React.FC<Props> = ({
           </button>
           <button
             onClick={() => setActiveTab('vocab')}
-            className={`flex flex-col items-center py-1 px-2 ${
+            className={`flex flex-col items-center py-1 px-2 relative ${
               activeTab === 'vocab' ? 'text-indigo-600 font-bold' : 'text-slate-500'
             }`}
           >
-            <BookmarkCheck className="w-4 h-4 mb-0.5" />
+            <div className="relative">
+              <BookmarkCheck className="w-4 h-4 mb-0.5" />
+              {user && user.savedVocabIds?.length > 0 && (
+                <span className="absolute -top-1 -right-2.5 px-1 py-0.2 text-[9px] font-bold bg-indigo-600 text-white rounded-full min-w-[14px] text-center leading-tight">
+                  {user.savedVocabIds.length}
+                </span>
+              )}
+            </div>
             <span>生詞</span>
           </button>
           <button

@@ -6,15 +6,57 @@ import { VocabularyNotebook } from './components/VocabularyNotebook';
 import { ExamGuideView } from './components/ExamGuideView';
 import { firebaseService } from './services/firebase';
 import { getLessonByDay } from './data/curriculumData';
-import type { UserProgress } from './types/curriculum';
+import type { UserProgress, SavedWordCard } from './types/curriculum';
+
+const LOCAL_SAVED_WORDS_KEY = 'deutsch_cert_saved_words_list';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<'journey' | 'lesson' | 'vocab' | 'guide'>('journey');
   const [selectedDay, setSelectedDay] = useState<number>(1);
   const [user, setUser] = useState<UserProgress | null>(null);
-  const [savedWordsList, setSavedWordsList] = useState<
-    Array<{ id: string; word: string; article?: 'der' | 'die' | 'das'; meaning: string; example?: string }>
-  >([]);
+  const [savedWordsList, setSavedWordsList] = useState<SavedWordCard[]>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem(LOCAL_SAVED_WORDS_KEY);
+        if (stored) return JSON.parse(stored);
+      } catch (err) {
+        console.warn('Failed to parse savedWordsList from local storage', err);
+      }
+    }
+    return [];
+  });
+
+  // Helper to persist saved words to both LocalStorage and Firebase user profile
+  const syncSavedWords = (newWords: SavedWordCard[], currentUser: UserProgress | null) => {
+    setSavedWordsList(newWords);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(LOCAL_SAVED_WORDS_KEY, JSON.stringify(newWords));
+    }
+    const wordStrings = newWords.map((w) => w.word);
+
+    const baseUser = currentUser || {
+      uid: 'guest-student',
+      displayName: '德語學員',
+      email: '',
+      photoURL: '',
+      streak: 1,
+      lastActiveDate: new Date().toISOString().split('T')[0],
+      completedDays: [],
+      savedVocabIds: [],
+      savedWords: [],
+      quizScores: {},
+      currentDay: 1,
+    };
+
+    const updatedUser: UserProgress = {
+      ...baseUser,
+      savedVocabIds: wordStrings,
+      savedWords: newWords,
+    };
+
+    setUser(updatedUser);
+    firebaseService.saveProgress(updatedUser);
+  };
 
   // Initialize Auth & Progress
   useEffect(() => {
@@ -23,6 +65,12 @@ export function App() {
     if (local) {
       setUser(local);
       setSelectedDay(local.currentDay || 1);
+      if (local.savedWords && local.savedWords.length > 0) {
+        setSavedWordsList(local.savedWords);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(LOCAL_SAVED_WORDS_KEY, JSON.stringify(local.savedWords));
+        }
+      }
     }
 
     // 2. Subscribe to Firebase Auth changes
@@ -31,6 +79,12 @@ export function App() {
         setUser(updatedUser as UserProgress);
         if (updatedUser.currentDay) {
           setSelectedDay(updatedUser.currentDay);
+        }
+        if (updatedUser.savedWords && updatedUser.savedWords.length > 0) {
+          setSavedWordsList(updatedUser.savedWords);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem(LOCAL_SAVED_WORDS_KEY, JSON.stringify(updatedUser.savedWords));
+          }
         }
       } else {
         setUser(null);
@@ -52,6 +106,9 @@ export function App() {
         if (res.user.currentDay) {
           setSelectedDay(res.user.currentDay);
         }
+        if (res.user.savedWords) {
+          setSavedWordsList(res.user.savedWords);
+        }
       }
     } catch (err) {
       console.error('Login error:', err);
@@ -69,36 +126,41 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Toggle or Save Vocabulary Word
   const handleSaveVocab = (
     word: string,
     meaning: string,
-    article?: 'der' | 'die' | 'das'
+    article?: 'der' | 'die' | 'das',
+    example?: string,
+    exampleTr?: string
   ) => {
-    const newWord = {
-      id: `user_vocab_${Date.now()}_${word}`,
-      word,
-      meaning,
-      article,
-      example: `Beispiel mit ${word}`,
-    };
+    const isAlreadySaved = savedWordsList.some((w) => w.word.toLowerCase() === word.toLowerCase());
 
-    setSavedWordsList((prev) => {
-      if (prev.some((w) => w.word === word)) return prev;
-      return [newWord, ...prev];
-    });
-
-    if (user) {
-      const updatedUser: UserProgress = {
-        ...user,
-        savedVocabIds: Array.from(new Set([...(user.savedVocabIds || []), word])),
+    if (isAlreadySaved) {
+      // Toggle off: remove
+      const updatedList = savedWordsList.filter((w) => w.word.toLowerCase() !== word.toLowerCase());
+      syncSavedWords(updatedList, user);
+    } else {
+      // Toggle on: add
+      const newWord: SavedWordCard = {
+        id: `user_vocab_${Date.now()}_${word}`,
+        word,
+        meaning,
+        article,
+        example: example || `Beispiel mit ${word}`,
+        exampleTr,
+        savedAt: new Date().toISOString(),
       };
-      setUser(updatedUser);
-      firebaseService.saveProgress(updatedUser);
+      const updatedList = [newWord, ...savedWordsList];
+      syncSavedWords(updatedList, user);
     }
   };
 
-  const handleRemoveWord = (id: string) => {
-    setSavedWordsList((prev) => prev.filter((w) => w.id !== id));
+  const handleRemoveWord = (wordIdOrWord: string) => {
+    const updatedList = savedWordsList.filter(
+      (w) => w.id !== wordIdOrWord && w.word !== wordIdOrWord
+    );
+    syncSavedWords(updatedList, user);
   };
 
   const handleCompleteDay = (day: number, score: number) => {
@@ -128,7 +190,8 @@ export function App() {
       streak: newStreak,
       lastActiveDate: todayStr,
       completedDays: updatedCompleted,
-      savedVocabIds: user?.savedVocabIds || [],
+      savedVocabIds: user?.savedVocabIds || savedWordsList.map((w) => w.word),
+      savedWords: user?.savedWords || savedWordsList,
       quizScores: updatedScores,
       currentDay: nextDay,
     };
@@ -171,6 +234,10 @@ export function App() {
             user={user}
             savedWordsList={savedWordsList}
             onRemoveWord={handleRemoveWord}
+            onNavigateToLesson={() => {
+              setActiveTab('lesson');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
 
@@ -199,15 +266,29 @@ export function App() {
             </button>
             <span>•</span>
             <button
+              onClick={() => setActiveTab('lesson')}
+              className="hover:text-white transition"
+            >
+              今日課堂
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => setActiveTab('vocab')}
+              className="hover:text-white transition"
+            >
+              生詞抽認卡
+            </button>
+            <span>•</span>
+            <button
               onClick={() => setActiveTab('guide')}
               className="hover:text-white transition"
             >
-              歌德檢定攻略
+              應試攻略指南
             </button>
           </div>
 
-          <p className="text-slate-500">
-            © 2026 Goethe 365 Deutsch. Alles Gute beim Deutschlernen!
+          <p className="text-slate-500 text-center sm:text-right">
+            © {new Date().getFullYear()} 德語歌德 365 認證. 遵循歐洲共同語言參考標準 CEFR 設計.
           </p>
         </div>
       </footer>
@@ -216,3 +297,4 @@ export function App() {
 }
 
 export default App;
+

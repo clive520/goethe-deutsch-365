@@ -7,6 +7,7 @@ import {
   Check,
   Volume2,
   BookmarkPlus,
+  BookmarkCheck,
   HelpCircle,
   FileText,
   CheckCircle2,
@@ -20,7 +21,13 @@ import { QuizQuestionCard } from './QuizQuestionCard';
 
 interface Props {
   exercise: ReadingExercise;
-  onSaveVocab?: (word: string, meaning: string, article?: 'der' | 'die' | 'das') => void;
+  onSaveVocab?: (
+    word: string,
+    meaning: string,
+    article?: 'der' | 'die' | 'das',
+    example?: string,
+    exampleTr?: string
+  ) => void;
   savedWords?: string[];
 }
 
@@ -198,14 +205,19 @@ export const ReadingModule: React.FC<Props> = ({
                   }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition self-start sm:self-auto ${
                     isWordSaved(selectedWord.word)
-                      ? 'bg-emerald-500 text-white'
+                      ? 'bg-emerald-600 hover:bg-red-600 text-white shadow-xs'
                       : 'bg-white/20 hover:bg-white/30 text-white'
                   }`}
+                  title={
+                    isWordSaved(selectedWord.word)
+                      ? '已加入生詞本（點擊可取消收藏）'
+                      : '加入生詞本'
+                  }
                 >
                   {isWordSaved(selectedWord.word) ? (
                     <>
-                      <Check className="w-3.5 h-3.5" />
-                      <span>已加入生詞本</span>
+                      <BookmarkCheck className="w-3.5 h-3.5 fill-white" />
+                      <span>已在生詞本 (點擊移除)</span>
                     </>
                   ) : (
                     <>

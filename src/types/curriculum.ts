@@ -97,6 +97,16 @@ export interface DayLesson {
   examTip?: ExamTip;
 }
 
+export interface SavedWordCard {
+  id: string;
+  word: string;
+  article?: 'der' | 'die' | 'das';
+  meaning: string;
+  example?: string;
+  exampleTr?: string;
+  savedAt?: string;
+}
+
 export interface UserProgress {
   uid: string;
   displayName: string;
@@ -106,6 +116,8 @@ export interface UserProgress {
   lastActiveDate: string; // YYYY-MM-DD
   completedDays: number[]; // e.g. [1, 2, 3]
   savedVocabIds: string[];
+  savedWords?: SavedWordCard[];
   quizScores: Record<number, number>; // day -> score
   currentDay: number;
 }
+
