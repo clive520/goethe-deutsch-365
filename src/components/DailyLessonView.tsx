@@ -22,6 +22,7 @@ import { SpeakingModule } from './SpeakingModule';
 import { ReadingModule } from './ReadingModule';
 import { SpeechService } from '../services/speechService';
 import { QuizQuestionCard } from './QuizQuestionCard';
+import { GrammarExplanationView } from './GrammarExplanationView';
 
 interface Props {
   lesson: DayLesson;
@@ -226,9 +227,7 @@ export const DailyLessonView: React.FC<Props> = ({
               </div>
             </div>
 
-            <p className="text-slate-700 leading-relaxed text-base">
-              {lesson.grammar.explanation}
-            </p>
+            <GrammarExplanationView explanation={lesson.grammar.explanation} />
 
             <div className="space-y-3 pt-2">
               <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wide">
@@ -323,7 +322,7 @@ export const DailyLessonView: React.FC<Props> = ({
                 <h4 className="font-bold text-slate-900 text-base mt-0.5">
                   {lesson.examTip.title}
                 </h4>
-                <p className="text-sm text-slate-700 mt-1 leading-relaxed">
+                <p className="text-sm text-slate-700 mt-1 leading-relaxed whitespace-pre-line">
                   {lesson.examTip.content}
                 </p>
               </div>
