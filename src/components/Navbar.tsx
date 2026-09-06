@@ -5,7 +5,6 @@ import {
   BookOpen,
   Map,
   BookmarkCheck,
-  Settings,
   LogOut,
   Sparkles,
 } from 'lucide-react';
@@ -17,7 +16,6 @@ interface Props {
   setActiveTab: (tab: 'journey' | 'lesson' | 'vocab' | 'guide') => void;
   user: UserProgress | null;
   onLoginClick: () => void;
-  onOpenFirebaseModal: () => void;
   onLogout: () => void;
 }
 
@@ -26,7 +24,6 @@ export const Navbar: React.FC<Props> = ({
   setActiveTab,
   user,
   onLoginClick,
-  onOpenFirebaseModal,
   onLogout,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -173,21 +170,10 @@ export const Navbar: React.FC<Props> = ({
                             }`}
                           ></span>
                           <span className="text-[10px] text-slate-500">
-                            {isFirebaseActive ? 'Firebase 已連線' : '本機 / 示範同步模式'}
+                            {isFirebaseActive ? '雲端同步中' : '本機模式'}
                           </span>
                         </div>
                       </div>
-
-                      <button
-                        onClick={() => {
-                          setMenuOpen(false);
-                          onOpenFirebaseModal();
-                        }}
-                        className="w-full px-4 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                      >
-                        <Settings className="w-4 h-4 text-slate-400" />
-                        <span>Firebase 專案設定</span>
-                      </button>
 
                       <button
                         onClick={() => {
@@ -230,15 +216,6 @@ export const Navbar: React.FC<Props> = ({
                 <span>Google 登入</span>
               </button>
             )}
-
-            {/* Quick Firebase Settings Icon */}
-            <button
-              onClick={onOpenFirebaseModal}
-              title="Firebase 設定"
-              className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition"
-            >
-              <Settings className="w-4 h-4" />
-            </button>
           </div>
         </div>
 

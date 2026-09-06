@@ -4,7 +4,6 @@ import { RoadmapView } from './components/RoadmapView';
 import { DailyLessonView } from './components/DailyLessonView';
 import { VocabularyNotebook } from './components/VocabularyNotebook';
 import { ExamGuideView } from './components/ExamGuideView';
-import { FirebaseModal } from './components/FirebaseModal';
 import { firebaseService } from './services/firebase';
 import { getLessonByDay } from './data/curriculumData';
 import type { UserProgress } from './types/curriculum';
@@ -13,7 +12,6 @@ export function App() {
   const [activeTab, setActiveTab] = useState<'journey' | 'lesson' | 'vocab' | 'guide'>('journey');
   const [selectedDay, setSelectedDay] = useState<number>(1);
   const [user, setUser] = useState<UserProgress | null>(null);
-  const [isFirebaseModalOpen, setIsFirebaseModalOpen] = useState<boolean>(false);
   const [savedWordsList, setSavedWordsList] = useState<
     Array<{ id: string; word: string; article?: 'der' | 'die' | 'das'; meaning: string; example?: string }>
   >([]);
@@ -149,7 +147,6 @@ export function App() {
         setActiveTab={setActiveTab}
         user={user}
         onLoginClick={handleLogin}
-        onOpenFirebaseModal={() => setIsFirebaseModalOpen(true)}
         onLogout={handleLogout}
       />
 
@@ -207,13 +204,6 @@ export function App() {
             >
               歌德檢定攻略
             </button>
-            <span>•</span>
-            <button
-              onClick={() => setIsFirebaseModalOpen(true)}
-              className="hover:text-white transition"
-            >
-              Firebase 連線設定
-            </button>
           </div>
 
           <p className="text-slate-500">
@@ -221,16 +211,6 @@ export function App() {
           </p>
         </div>
       </footer>
-
-      {/* Firebase Config Modal */}
-      <FirebaseModal
-        isOpen={isFirebaseModalOpen}
-        onClose={() => setIsFirebaseModalOpen(false)}
-        onConfigSaved={() => {
-          const local = firebaseService.getLocalProgress();
-          if (local) setUser(local);
-        }}
-      />
     </div>
   );
 }
