@@ -24,7 +24,19 @@ export interface FirebaseCustomConfig {
   storageBucket?: string;
   messagingSenderId?: string;
   appId?: string;
+  databaseURL?: string;
 }
+
+// 採用小說連載專案 (test-reading-71839) 之 Firebase 預設配置
+export const DEFAULT_FIREBASE_CONFIG: FirebaseCustomConfig = {
+  apiKey: 'AIzaSyB9NJXQwdKweStTbATahldDgvtbuGclo34',
+  authDomain: 'test-reading-71839.firebaseapp.com',
+  projectId: 'test-reading-71839',
+  storageBucket: 'test-reading-71839.firebasestorage.app',
+  messagingSenderId: '499192051513',
+  appId: '1:499192051513:web:717a1276cc6dfeed995ae8',
+  databaseURL: 'https://test-reading-71839-default-rtdb.asia-southeast1.firebasedatabase.app',
+};
 
 const STORAGE_CONFIG_KEY = 'deutsch_cert_firebase_config';
 const STORAGE_PROGRESS_KEY = 'deutsch_cert_user_progress';
@@ -61,11 +73,12 @@ class FirebaseService {
   }
 
   public getConfig(): FirebaseCustomConfig | null {
-    if (typeof window === 'undefined') return null;
+    if (typeof window === 'undefined') return DEFAULT_FIREBASE_CONFIG;
     const stored = localStorage.getItem(STORAGE_CONFIG_KEY);
     if (stored) {
       try {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        if (parsed && parsed.apiKey) return parsed;
       } catch {
         // ignore
       }
@@ -83,7 +96,7 @@ class FirebaseService {
       };
     }
 
-    return null;
+    return DEFAULT_FIREBASE_CONFIG;
   }
 
   public saveConfig(config: FirebaseCustomConfig) {
@@ -98,46 +111,76 @@ class FirebaseService {
   }
 
   /**
-   * Google Sign-In
+   * Google Sign-In (支援真實 Google 帳號與彈窗阻擋/未授權網域友善降級處理)
    */
   public async signInWithGoogle(): Promise<{ user: Partial<UserProgress>; isDemo: boolean }> {
     if (this.isFirebaseReady() && this.auth) {
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
-      const cred = await signInWithPopup(this.auth, provider);
-      const user = cred.user;
-      this.currentUser = user;
+      provider.addScope('profile');
+      provider.addScope('email');
 
-      // Sync progress from Firestore or create initial
-      const progress = await this.loadProgress(user.uid, {
-        displayName: user.displayName || '德語學員',
-        email: user.email || '',
-        photoURL: user.photoURL || '',
-      });
+      try {
+        const cred = await signInWithPopup(this.auth, provider);
+        const user = cred.user;
+        this.currentUser = user;
 
-      return { user: progress, isDemo: false };
-    } else {
-      // Demo / Offline Google Account Simulation
-      const demoUser: UserProgress = {
-        uid: 'google-demo-user-365',
-        displayName: 'Google 學生示範帳號',
-        email: 'student@german-cert.edu',
-        photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
-        streak: 7,
-        lastActiveDate: new Date().toISOString().split('T')[0],
-        completedDays: [1, 2, 3],
-        savedVocabIds: ['w1', 'w3'],
-        quizScores: { 1: 100, 2: 95, 3: 100 },
-        currentDay: 4,
-      };
+        // Sync progress from Firestore or create initial
+        const progress = await this.loadProgress(user.uid, {
+          displayName: user.displayName || '德語學員',
+          email: user.email || '',
+          photoURL: user.photoURL || '',
+        });
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(demoUser));
-        localStorage.setItem(STORAGE_PROGRESS_KEY, JSON.stringify(demoUser));
+        return { user: progress, isDemo: false };
+      } catch (err: any) {
+        console.error('[FirebaseService] Google 登入異常:', err);
+        if (err.code === 'auth/unauthorized-domain') {
+          alert(
+            '【Google 認證網域授權提醒】\n\n' +
+            '當前網址 (' + window.location.hostname + ') 尚未加入 Firebase 控制台的已授權網域。\n\n' +
+            '請至 Firebase 控制台 (專案 test-reading-71839)：\n' +
+            'Authentication ➜ Settings ➜ Authorized domains ➜ 新增網域：\n' +
+            window.location.hostname + '\n\n' +
+            '目前將先為您以示範模式登入，讓您能順暢體驗學習！'
+          );
+          return this.signInDemoUser();
+        } else if (err.code === 'auth/popup-blocked') {
+          alert('登入視窗已被瀏覽器封鎖，請允許快顯視窗後重試。');
+          throw err;
+        } else if (err.code === 'auth/popup-closed-by-user') {
+          console.log('使用者手動關閉了 Google 登入視窗');
+          throw err;
+        } else {
+          alert('Google 登入失敗：' + (err.message || err.code));
+          throw err;
+        }
       }
-
-      return { user: demoUser, isDemo: true };
+    } else {
+      return this.signInDemoUser();
     }
+  }
+
+  private signInDemoUser(): { user: Partial<UserProgress>; isDemo: boolean } {
+    const demoUser: UserProgress = {
+      uid: 'google-demo-user-365',
+      displayName: 'Google 學生示範帳號',
+      email: 'student@german-cert.edu',
+      photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
+      streak: 7,
+      lastActiveDate: new Date().toISOString().split('T')[0],
+      completedDays: [1, 2, 3],
+      savedVocabIds: ['w1', 'w3'],
+      quizScores: { 1: 100, 2: 95, 3: 100 },
+      currentDay: 4,
+    };
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(demoUser));
+      localStorage.setItem(STORAGE_PROGRESS_KEY, JSON.stringify(demoUser));
+    }
+
+    return { user: demoUser, isDemo: true };
   }
 
   public async signOut(): Promise<void> {
