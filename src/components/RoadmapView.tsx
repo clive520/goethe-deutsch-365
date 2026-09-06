@@ -16,9 +16,10 @@ import type { CefrLevel, UserProgress } from '../types/curriculum';
 interface Props {
   user: UserProgress | null;
   onSelectDay: (day: number) => void;
+  onOpenAlphabet?: () => void;
 }
 
-export const RoadmapView: React.FC<Props> = ({ user, onSelectDay }) => {
+export const RoadmapView: React.FC<Props> = ({ user, onSelectDay, onOpenAlphabet }) => {
   const [selectedStage, setSelectedStage] = useState<CefrLevel | 'ALL'>('ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -78,6 +79,19 @@ export const RoadmapView: React.FC<Props> = ({ user, onSelectDay }) => {
               <ArrowRight className="w-4 h-4" />
             </button>
 
+            {onOpenAlphabet && (
+              <button
+                onClick={onOpenAlphabet}
+                className="px-5 py-3.5 bg-white/10 hover:bg-white/20 border border-amber-400/40 text-amber-300 font-bold text-sm rounded-2xl shadow-md transition active:scale-95 flex items-center space-x-2"
+              >
+                <span className="text-base">🔤</span>
+                <span>德語字母 4 合 1 特訓（聽說讀寫）</span>
+                <span className="text-[10px] bg-amber-400 text-slate-950 font-black px-1.5 py-0.5 rounded-full">
+                  獨立專章
+                </span>
+              </button>
+            )}
+
             <div className="flex items-center space-x-4 text-xs font-semibold text-slate-300 bg-white/10 px-4 py-3 rounded-2xl backdrop-blur-xs">
               <span className="flex items-center text-amber-300">
                 <Flame className="w-4 h-4 mr-1 fill-amber-400 text-amber-400" />
@@ -95,6 +109,41 @@ export const RoadmapView: React.FC<Props> = ({ user, onSelectDay }) => {
         {/* Subtle Background Glow */}
         <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
       </div>
+
+      {/* Standalone Alphabet Special Banner */}
+      {onOpenAlphabet && (
+        <div className="bg-gradient-to-r from-amber-500/10 via-indigo-500/10 to-slate-100 border-2 border-amber-300/70 rounded-3xl p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
+          <div className="flex items-start space-x-4">
+            <div className="w-14 h-14 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-2xl shadow-md shrink-0">
+              Aa
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-200/90 text-amber-950">
+                  零基礎入門第一課 • 獨立專章
+                </span>
+                <span className="text-xs text-slate-500 font-medium hidden sm:inline">
+                  30 個字母完整掌握
+                </span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 mt-1">
+                德語 30 字母發音與筆順 4 合 1 專題特訓
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                包含 26 個標準字母 + 3 個變音字母（Ä, Ö, Ü）+ 1 個特殊字母（ß）。專為零基礎學習者設計的「聽（標準德語發音）、說（AI 語音即時辨識與準確度打分）、讀（嘴型舌位發音圖解與易混淆發音對比）、寫（筆順動態指導與手寫板實時練習）」及歌德拼字實戰測驗。
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={onOpenAlphabet}
+            className="w-full md:w-auto px-6 py-3.5 bg-slate-950 hover:bg-slate-800 text-white font-bold text-sm rounded-xl shadow-md transition active:scale-95 shrink-0 flex items-center justify-center space-x-2 cursor-pointer"
+          >
+            <span>開始字母特訓</span>
+            <ArrowRight className="w-4 h-4 text-amber-400" />
+          </button>
+        </div>
+      )}
 
       {/* 4 CEFR Stage Cards Overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

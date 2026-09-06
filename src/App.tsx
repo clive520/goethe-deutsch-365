@@ -4,6 +4,7 @@ import { RoadmapView } from './components/RoadmapView';
 import { DailyLessonView } from './components/DailyLessonView';
 import { VocabularyNotebook } from './components/VocabularyNotebook';
 import { ExamGuideView } from './components/ExamGuideView';
+import { AlphabetCourseView } from './components/AlphabetCourseView';
 import { firebaseService } from './services/firebase';
 import { getLessonByDay } from './data/curriculumData';
 import type { UserProgress, SavedWordCard } from './types/curriculum';
@@ -11,7 +12,7 @@ import type { UserProgress, SavedWordCard } from './types/curriculum';
 const LOCAL_SAVED_WORDS_KEY = 'deutsch_cert_saved_words_list';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<'journey' | 'lesson' | 'vocab' | 'guide'>('journey');
+  const [activeTab, setActiveTab] = useState<'journey' | 'lesson' | 'vocab' | 'guide' | 'alphabet'>('journey');
   const [selectedDay, setSelectedDay] = useState<number>(1);
   const [user, setUser] = useState<UserProgress | null>(null);
   const [savedWordsList, setSavedWordsList] = useState<SavedWordCard[]>(() => {
@@ -216,7 +217,23 @@ export function App() {
       {/* Main View Area */}
       <main className="flex-1">
         {activeTab === 'journey' && (
-          <RoadmapView user={user} onSelectDay={handleSelectDay} />
+          <RoadmapView
+            user={user}
+            onSelectDay={handleSelectDay}
+            onOpenAlphabet={() => {
+              setActiveTab('alphabet');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
+        {activeTab === 'alphabet' && (
+          <AlphabetCourseView
+            onBackToRoadmap={() => {
+              setActiveTab('journey');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
         )}
 
         {activeTab === 'lesson' && (
@@ -263,6 +280,16 @@ export function App() {
               className="hover:text-white transition"
             >
               365 學習地圖
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => {
+                setActiveTab('alphabet');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-amber-400 text-amber-300/90 font-medium transition"
+            >
+              德語 30 字母特訓
             </button>
             <span>•</span>
             <button

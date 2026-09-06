@@ -7,13 +7,14 @@ import {
   BookmarkCheck,
   LogOut,
   Sparkles,
+  Type,
 } from 'lucide-react';
 import type { UserProgress } from '../types/curriculum';
 import { firebaseService } from '../services/firebase';
 
 interface Props {
-  activeTab: 'journey' | 'lesson' | 'vocab' | 'guide';
-  setActiveTab: (tab: 'journey' | 'lesson' | 'vocab' | 'guide') => void;
+  activeTab: 'journey' | 'lesson' | 'vocab' | 'guide' | 'alphabet';
+  setActiveTab: (tab: 'journey' | 'lesson' | 'vocab' | 'guide' | 'alphabet') => void;
   user: UserProgress | null;
   onLoginClick: () => void;
   onLogout: () => void;
@@ -70,6 +71,21 @@ export const Navbar: React.FC<Props> = ({
             >
               <Map className="w-4 h-4" />
               <span>365 旅程地圖</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('alphabet')}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition ${
+                activeTab === 'alphabet'
+                  ? 'bg-amber-50 text-amber-800 font-bold shadow-xs border border-amber-200'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <Type className="w-4 h-4 text-amber-500" />
+              <span>德語字母</span>
+              <span className="px-1.5 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-800 rounded-md">
+                4合1特訓
+              </span>
             </button>
 
             <button
@@ -229,6 +245,15 @@ export const Navbar: React.FC<Props> = ({
           >
             <Map className="w-4 h-4 mb-0.5" />
             <span>地圖</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('alphabet')}
+            className={`flex flex-col items-center py-1 px-2 ${
+              activeTab === 'alphabet' ? 'text-amber-600 font-bold' : 'text-slate-500'
+            }`}
+          >
+            <Type className="w-4 h-4 mb-0.5" />
+            <span>字母</span>
           </button>
           <button
             onClick={() => setActiveTab('lesson')}
