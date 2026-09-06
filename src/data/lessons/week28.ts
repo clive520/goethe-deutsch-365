@@ -1,0 +1,1873 @@
+import type { DayLesson } from '../../types/curriculum';
+
+export const week28Lessons: Record<number, DayLesson> = {
+  190: {
+    day: 190,
+    stage: 'B1',
+    week: 28,
+    dayOfWeek: 1,
+    title: 'Höfliche Bitten mit würde / könnte / dürfte 社交與職場極致客氣用語',
+    germanTitle: 'B1-Konjunktiv II: Höfliche Bitten, Fragen und Aufforderungen',
+    theme: '虛擬二式（Konjunktiv II）現在式核心形式：würde + Infinitiv、könnte（können）、dürfte（dürfen）、wäre（sein）、hätte（haben）；極致禮貌請求與社交得體用語',
+    estimatedMinutes: 20,
+    grammar: {
+      title: '虛擬二式之構成法與禮貌功能 (Konjunktiv II der Gegenwart: Höflichkeit)',
+      explanation:
+        '在德語社交與職場文化中，直陳式命令句（如 „Geben Sie mir das!“）常顯得唐突無禮。運用「虛擬二式（Konjunktiv II）」能夠為話語注入委婉、謙遜與高度教養。\n1.【虛擬二式基本構成法則】\n  - 絕大多數常規動詞：採用「würde + 原形不定詞（Infinitiv）」\n    * „Ich [würde] Sie gerne etwas [fragen].“ (我想要問您一些事情)\n    * „[Würden] Sie bitte das Fenster [schließen]?“ (能否請您把窗戶關上？)\n  - 強制使用固定形式的五大天王（不加 würde）：\n    * sein -> wäre (ich wäre, du wärst, er wäre, wir wären, ihr wärt, sie/Sie wären)\n    * haben -> hätte (ich hätte, du hättest, er hätte, wir hätten, ihr hättet, sie/Sie hätten)\n    * können -> könnte (ich könnte, du könntest, er könnte, wir könnten...)\n    * müssen -> müsste (ich müsste...)\n    * dürfen -> dürfte (ich dürfte...)\n2.【三大情境之禮貌功能矩陣】\n  - 禮貌請求他人行動（könnten / würden）：\n    * „[Könnten] Sie mir bitte behilflich sein?“ (您能否幫我一個忙？)\n    * „[Würden] Sie bitte hier unterschreiben?“ (能否請您在這裡簽名？)\n  - 禮貌請求自身許可（dürfte）：\n    * „[Dürfte] ich kurz eine Zwischenfrage stellen?“ (請允許我提一個插問好嗎？)\n  - 委婉表達個人願望（hätte gern / wäre froh）：\n    * „Ich [hätte gern] einen Kaffee mit Hafermilch.“ (我想要一杯燕麥奶咖啡)\n    * „Ich [wäre] Ihnen sehr dankbar, wenn Sie mir Bescheid gäben.“',
+      ruleExample: [
+        { de: 'Könnten Sie mir bitte sagen, wann der nächste Zug nach Berlin abfährt?', zh: '能否請您告訴我，下一班開往柏林的火車何時出發？', note: 'könnten Sie bitte... (極致禮貌詢問)' },
+        { de: 'Würden Sie mir bitte das Salz reichen?', zh: '能否請您把鹽遞給我？', note: 'würden + Infinitiv (替代命令句)' },
+        { de: 'Dürfte ich mich für einen kurzen Moment an Ihren Tisch setzen?', zh: '請允許我在您的桌旁坐一會兒好嗎？', note: 'dürfte ich... (極致委婉徵求許可)' },
+        { de: 'Ich hätte gern zwei Fahrkarten für die 1. Klasse.', zh: '我想要買兩張頭等艙車票。', note: 'hätte gern (取代生硬的 Ich will)' },
+      ],
+    },
+    vocabulary: [
+      {
+        id: 'd190_v1',
+        word: 'die Höflichkeit',
+        article: 'die',
+        plural: 'die Höflichkeiten',
+        meaning: '禮貌、客氣、謙遜',
+        ipa: '/ˈhøːflɪçkaɪ̯t/',
+        example: 'Höflichkeit öffnet viele Türen im Berufsleben.',
+        exampleTr: '在職場生涯中，禮貌能開啟許多機會大門。',
+      },
+      {
+        id: 'd190_v2',
+        word: 'die Bitte',
+        article: 'die',
+        plural: 'die Bitten',
+        meaning: '請求、懇求',
+        ipa: '/ˈbɪtə/',
+        example: 'Darf ich Sie um eine kleine Bitte bitten?',
+        exampleTr: '我能向您提出一個小小的請求嗎？',
+      },
+      {
+        id: 'd190_v3',
+        word: 'die Zurückhaltung',
+        article: 'die',
+        plural: 'die Zurückhaltungen',
+        meaning: '克制、含蓄、委婉',
+        ipa: '/t͡suˈʁʏkˌhaltʊŋ/',
+        example: 'Diplomaten zeichnen sich durch sprachliche Zurückhaltung aus.',
+        exampleTr: '外交官的特點是言辭克制而得體。',
+      },
+      {
+        id: 'd190_v4',
+        word: 'belästigen',
+        meaning: '打擾、騷擾、麻煩（動詞三態：belästigt, belästigte, hat belästigt）',
+        ipa: '/bəˈlɛstɪɡn̩/',
+        example: 'Verzeihen Sie, ich wollte Sie keinesfalls belästigen.',
+        exampleTr: '請原諒，我絕不想打擾您。',
+      },
+      {
+        id: 'd190_v5',
+        word: 'gestatten',
+        meaning: '允許、准許（動詞三態：gestattet, gestattete, hat gestattet）',
+        ipa: '/ɡəˈʃtatn̩/',
+        example: 'Gestatten Sie mir, mich kurz vorzustellen.',
+        exampleTr: '請允許我做個簡短的自我介紹。',
+      },
+      {
+        id: 'd190_v6',
+        word: 'unverbindlich',
+        meaning: '無拘束的、不具約束力的、友善隨和的',
+        ipa: '/ˈʊnfɛɐ̯ˌbɪntlɪç/',
+        example: 'Dieses Angebot ist für Sie völlig unverbindlich.',
+        exampleTr: '這份報價對您完全沒有任何約束負擔。',
+      },
+      {
+        id: 'd190_v7',
+        word: 'dankbar',
+        meaning: '感謝的、感激的（für + Akk / jemandem dankbar sein）',
+        ipa: '/ˈdaŋkbaːɐ̯/',
+        example: 'Ich wäre Ihnen für eine rasche Prüfung sehr dankbar.',
+        exampleTr: '若您能迅速審核，我將萬分感激。',
+      },
+    ],
+    listening: {
+      title: '公家機關服務台：民眾諮詢居留證換發',
+      dialogue: [
+        {
+          speaker: 'Bürger',
+          de: 'Guten Tag, verzeihen Sie die Störung. Dürfte ich Ihnen eine kurze Frage zur Verlängerung meines Aufenthaltstitels stellen?',
+          zh: '日安，請原諒我的打擾。請允許我向您請教一個關於居留證延期的小問題好嗎？',
+        },
+        {
+          speaker: 'Beamter',
+          de: 'Guten Tag! Natürlich gern. Wie könnte ich Ihnen denn behilflich sein?',
+          zh: '日安！當然樂意。我有什麼可以為您效勞的嗎？',
+        },
+        {
+          speaker: 'Bürger',
+          de: 'Könnten Sie mir bitte sagen, welche Unterlagen ich für den Termin nächste Woche noch mitbringen müsste?',
+          zh: '能否請您告訴我，下週的預約我還必須帶齊哪些文件？',
+        },
+        {
+          speaker: 'Beamter',
+          de: 'Sie bräuchten Ihren gültigen Reisepass, ein aktuelles biometrisches Passfoto und die letzte Gehaltsabrechnung.',
+          zh: '您需要具備有效的護照、一張近期的生物識別證件照以及上個月的薪資單。',
+        },
+        {
+          speaker: 'Bürger',
+          de: 'Wunderbar. Würden Sie mir bitte noch dieses Antragsformular aushändigen?',
+          zh: '太好了。能否請您把這份申請表格也交發給我一張？',
+        },
+        {
+          speaker: 'Beamter',
+          de: 'Sehr gern, bitteschön! Füllen Sie es einfach zu Hause in Ruhe aus.',
+          zh: '非常樂意，給您！您只需在家中安心填寫好即可。',
+        },
+      ],
+      questions: [
+        {
+          id: 'd190_lq1',
+          question: 'Mit welcher höflichen Formulierung beginnt der Bürger das Gespräch?',
+          options: [
+            'Geben Sie mir sofort Auskunft!',
+            'Dürfte ich Ihnen eine kurze Frage stellen?',
+            'Warum arbeitet hier niemand?',
+            'Ich will den Chef sprechen.',
+          ],
+          correctIndex: 1,
+          explanation: '民眾使用極致禮貌的虛擬二式「Dürfte ich Ihnen eine kurze Frage... stellen?」。',
+        },
+        {
+          id: 'd190_lq2',
+          question: 'Welche Unterlagen braucht der Bürger für den Termin?',
+          options: [
+            'Nur etwas Geld.',
+            'Reisepass, biometrisches Passfoto und die letzte Gehaltsabrechnung.',
+            'Einen Mietvertrag und ein Führungszeugnis.',
+            'Überhaupt keine Unterlagen.',
+          ],
+          correctIndex: 1,
+          explanation: '公務員列舉了「Reisepass, ein aktuelles biometrisches Passfoto und die letzte Gehaltsabrechnung」。',
+        },
+      ],
+    },
+    speaking: {
+      title: '委婉請求與虛擬二式句型演練 (Höfliche Bitten im Alltag)',
+      targetSentences: [
+        {
+          de: 'Könnten Sie mir bitte helfen, den Koffer ins Gepäckfach zu heben?',
+          zh: '能否請您幫我把行李箱抬到行李架上？',
+          phoneticTips: 'KÖNN-ten Sie bit-te 語氣溫和親切',
+        },
+        {
+          de: 'Würden Sie bitte die Musik etwas leiser stellen? Ich muss mich konzentrieren.',
+          zh: '能否請您把音樂調小聲一點？我需要專心。',
+          phoneticTips: 'lei-ser stel-len 輕巧滑音',
+        },
+        {
+          de: 'Dürfte ich mir kurz Ihren Kugelschreiber leihen?',
+          zh: '請允許我借用一下您的原子筆好嗎？',
+          phoneticTips: 'Dürf-te ich mir... 典型德國社交禮儀',
+        },
+        {
+          de: 'Ich wäre Ihnen sehr dankbar, wenn Sie mir die Unterlagen zusenden könnten.',
+          zh: '若您能把文件寄發給我，我將萬分感激。',
+          phoneticTips: 'wä-re Ih-nen dank-bar 高雅書信口語必備',
+        },
+      ],
+      rolePlay: {
+        scenario: '歌德 B1 口說 Teil 1 & 3：向搭檔提出換時間請求',
+        role: '考生',
+        prompt: '你原定週二下午與搭檔討論專案，但臨時要看醫生。請使用 könnte / würde 禮貌解釋並提議改至週三。',
+        modelAnswer:
+          'Hallo Jonas, verzeih bitte die Störung. Ich habe am Dienstagnachmittag leider einen dringenden Termin beim Zahnarzt. Würde es dir etwas ausmachen, wenn wir unser Treffen auf Mittwoch verschieben? Wir könnten uns dann gern um 15 Uhr in der Bibliothek treffen.',
+      },
+    },
+    reading: {
+      title: '德國社交文化指南：為什麼「Könnten Sie」比「Geben Sie mir」更受歡迎？',
+      documentType: 'Kulturratgeber',
+      content:
+        'KNIGGE FÜR DEN DEUTSCHEN ALLTAG: DIE MACHT DES KONJUNKTIVS II\n\nIm Deutschen gibt es einen sprichwörtlichen Unterschied zwischen dem Ton, der die Musik macht, und bloßen Worten. Während in manchen Sprachen kurze Befehle durch freundliche Intonation abgemildert werden, verlangt das Deutsche dafür grammatikalische Höflichkeitscodes.\n\nWer in der Bäckerei sagt: „Ich will zwei Brötchen!“, gilt schnell als unhöflich oder gar forsch. Der Standard lautet: „Ich hätte gern zwei Brötchen, bitte.“\n\nIm Berufsleben ist der Konjunktiv II noch unverzichtbarer. Eine E-Mail mit der Formulierung „Schicken Sie mir den Bericht sofort!“ erzeugt Druck und Widerstand. Schreibt man hingegen: „Könnten Sie mir den Bericht freundlicherweise bis 16 Uhr zukommen lassen? Ich wäre Ihnen sehr dankbar“, erzielt man meist sofortige Kooperationsbereitschaft.\n\nDer Konjunktiv II signalisiert Respekt vor der Zeit und der Autonomie des Gegenübers.',
+      translation:
+        '德國日常社交禮儀指南：虛擬二式的非凡力量\n\n德語有一句諺語：「說話的聲調決定了樂曲的旋律（Der Ton macht die Musik）」。雖然在某些語言中，簡短的命令句可以藉由友善的語氣來軟化，但德語卻要求透過文法上的禮貌代碼來體現。\n\n凡在麵包店說「Ich will zwei Brötchen!」（我要兩個麵包！）的人，很快會被視為粗魯無禮甚至專橫傲慢。標準用語一律是：「Ich hätte gern zwei Brötchen, bitte.」（我想要兩個麵包，謝謝）。\n\n在職場生活中，虛擬二式更是不可或缺。一封寫著「Schicken Sie mir den Bericht sofort!」（立刻把報告發給我！）的信件只會引發壓力與牴觸。相反地，如果寫成：「Könnten Sie mir den Bericht freundlicherweise bis 16 Uhr zukommen lassen? Ich wäre Ihnen sehr dankbar」（能否請您在 16 點前把報告送呈給我？我將萬分感激），通常能立刻獲得配合意願。\n\n虛擬二式象徵著對他人時間與自主權的充分尊重。',
+      glossary: {
+        'forsch': { pos: 'Adj.', meaning: '生硬粗暴的、專橫的' },
+        'zukommen lassen': { pos: 'Phrase', meaning: '呈交、發送給某人' },
+        'die Autonomie': { pos: 'die', meaning: '自主性、自主權' },
+        'die Kooperationsbereitschaft': { pos: 'die', meaning: '合作意願' },
+      },
+      questions: [
+        {
+          id: 'd190_rq1',
+          question: 'Warum gilt der Satz „Ich will zwei Brötchen“ in der Bäckerei als unhöflich?',
+          options: [
+            'Weil man nur Brot kaufen darf.',
+            'Weil „Ich will“ im Deutschen als forsch empfunden wird; man verwendet „Ich hätte gern“.',
+            'Weil Brötchen zu teuer sind.',
+            'Weil der Bäcker kein Deutsch versteht.',
+          ],
+          correctIndex: 1,
+          explanation: '指南指出「Ich will」會給人生硬傲慢之感，德國日常標準禮貌用語是「Ich hätte gern」。',
+        },
+        {
+          id: 'd190_rq2',
+          question: 'Was signalisiert der Konjunktiv II laut dem Text?',
+          options: [
+            'Dass man keine Lust zum Arbeiten hat.',
+            'Respekt vor der Zeit und der Autonomie des Gesprächspartners.',
+            'Dass man aus dem Ausland kommt.',
+            'Dass die Nachricht nicht ernst gemeint ist.',
+          ],
+          correctIndex: 1,
+          explanation: '文章結尾強調「Der Konjunktiv II signalisiert Respekt vor der Zeit und der Autonomie des Gegenübers」。',
+        },
+      ],
+    },
+    quiz: {
+      title: '虛擬二式禮貌形式變化測驗',
+      questions: [
+        {
+          id: 'd190_q1',
+          question: '情態動詞「können」在虛擬二式第二人稱尊稱（Sie）的形式是：',
+          options: ['könnten Sie', 'konnten Sie', 'können Sie', 'hätten gekonnt'],
+          correctIndex: 0,
+          explanation: 'können 的虛擬二式必帶變音 Umlaut，形式為 könnten Sie。',
+        },
+        {
+          id: 'd190_q2',
+          question: '「_______ ich kurz das Fenster öffnen? Es ist sehr warm hier.」空格應填入最禮貌的許可請求：',
+          options: ['Darf', 'Dürfte', 'Muss', 'Sollte'],
+          correctIndex: 1,
+          explanation: 'Dürfte ich...（請允許我...好嗎？）是徵求許可最委婉優雅的虛擬二式形式。',
+        },
+        {
+          id: 'd190_q3',
+          question: '在餐廳點餐時，最符合德國社交教養的說法是：',
+          options: [
+            'Ich will ein Bier!',
+            'Gib mir ein Bier!',
+            'Ich hätte gern ein Bier, bitte.',
+            'Bier her!',
+          ],
+          correctIndex: 2,
+          explanation: '「Ich hätte gern... bitte」是德語世界全體通用的最高禮貌點單標準。',
+        },
+        {
+          id: 'd190_q4',
+          question: '「Ich _______ Ihnen sehr dankbar, wenn Sie mir helfen könnten.」空格應填入：',
+          options: ['wäre', 'werde', 'hätte', 'würde'],
+          correctIndex: 0,
+          explanation: '搭配形容詞 dankbar（感激的），動詞 sein 的虛擬二式是 wäre（Ich wäre Ihnen sehr dankbar）。',
+        },
+      ],
+    },
+    examTip: {
+      skill: 'Sprechen',
+      title: 'B1 考場救命法則：永遠用「Könnten wir...」取代「Wir müssen...」',
+      content:
+        '在歌德 B1 口說 Teil 3 協商策劃任務時，千萬不要對搭檔說「Du musst den Kuchen mitbringen!」或「Wir müssen um 10 Uhr da sein!」，這會顯得專斷獨行。請一律切換為：「Könntest du vielleicht den Kuchen mitbringen?」與「Würde es dir passen, wenn wir uns um 10 Uhr treffen?」，考官會直接把交際禮儀分（Interaktion）打到滿檔！',
+    },
+  },
+
+  191: {
+    day: 191,
+    stage: 'B1',
+    week: 28,
+    dayOfWeek: 2,
+    title: 'Wünsche & Träume ausdrücken 願望與夢想表達',
+    germanTitle: 'B1-Irreale Wünsche: Wenn doch bloß... Träume und Sehnsüchte im Konjunktiv II',
+    theme: '非真實願望句（Irreale Wunschsätze）：使用 wenn doch / bloß / nur 或動詞置首結構；夢想、遺憾與美好期盼之表達',
+    estimatedMinutes: 20,
+    grammar: {
+      title: '非真實願望句兩大結構與願望信號詞 (Irreale Wunschsätze)',
+      explanation:
+        '當我們表達「當前現實難以達成，但內心極度渴望的夢想或願望」時，德語使用「非真實願望句（Irreale Wunschsätze）」。這種句子在句末【必須加上驚嘆號（!）】。\n1.【結構一：Wenn 引導（變位動詞置尾）】\n  - 句型：Wenn + [Subjekt] + [doch / bloß / nur] + ... + [Konjunktiv II]!\n  - 注意：必須包含信號加強詞 doch, bloß 或 nur（意為「要是...該多好啊」）！\n  - 例句：\n    * „Wenn ich doch mehr Zeit für meine Hobbys [hätte]!“ (要是我有更多時間該多好啊！)\n    * „Wenn das Wetter heute bloß schön [wäre]!“ (今天要是天氣晴朗該多好啊！)\n    * „Wenn wir nur mehr Geld im Urlaub ausgeben [könnten]!“\n2.【結構二：無連詞動詞置首（Verb an Position 1）】\n  - 句型：[Konjunktiv II] + [Subjekt] + [doch / bloß / nur] + ...!\n  - 例句：\n    * „[Hätte] ich doch mehr Zeit!“ (等同於 Wenn ich doch mehr Zeit hätte!)\n    * „[Wäre] er bloß pünktlich gekommen!“ (他要是準時來該多好！)\n    * „[Könnte] ich doch nur fliegen!“ (要是我能飛該多好！)\n3.【主句願望表達（Ich wünschte, ...）】\n  - „Ich wünschte, ich wäre jetzt am Strand in Spanien.“ (我真希望我現在正躺在西班牙沙灘上。)',
+      ruleExample: [
+        { de: 'Wenn ich doch fließend Deutsch sprechen könnte!', zh: '要是我能流利說德語該多好啊！', note: 'Wenn + doch + könnte 置尾 + !' },
+        { de: 'Hätte ich bloß im Lotto eine Million Euro gewonnen!', zh: '要是我在樂透中了一百萬歐元該多好啊！', note: '動詞 hätte 置首 + bloß + !' },
+        { de: 'Ich wünschte, die Tage hätten 30 Stunden.', zh: '我真希望一天能有 30 個小時。', note: 'Ich wünschte, ... (虛擬願望)' },
+        { de: 'Wenn wir doch nur einmal die Nordlichter mit eigenen Augen sehen könnten!', zh: '要是我們能親眼見一次極光該多好啊！', note: 'doch nur 強烈願望感嘆' },
+      ],
+    },
+    vocabulary: [
+      {
+        id: 'd191_v1',
+        word: 'der Lebenstraum',
+        article: 'der',
+        plural: 'die Lebensträume',
+        meaning: '畢生夢想、終生願望',
+        ipa: '/ˈleːbn̩sˌtʁaʊ̯m/',
+        example: 'Eine Weltreise auf einem Segelschiff ist ihr größter Lebenstraum.',
+        exampleTr: '搭帆船環遊世界是她畢生的最大夢想。',
+      },
+      {
+        id: 'd191_v2',
+        word: 'die Sehnsucht',
+        article: 'die',
+        plural: 'die Sehnsüchte',
+        meaning: '渴望、憧憬、思念（nach + Dat）',
+        ipa: '/ˈzeːnˌzʊxt/',
+        example: 'Im kalten Winter wächst die Sehnsucht nach Sonne und Meer.',
+        exampleTr: '在寒冬中，對陽光與大海的憧憬愈發強烈。',
+      },
+      {
+        id: 'd191_v3',
+        word: 'der Wunschtraum',
+        article: 'der',
+        plural: 'die Wunschträume',
+        meaning: '空想、理想化的願望',
+        ipa: '/ˈvʊnʃˌtʁaʊ̯m/',
+        example: 'Viel Geld ohne Arbeit bleibt für die meisten ein reiner Wunschtraum.',
+        exampleTr: '不勞而獲擁有巨款對大多數人來說純粹是一場空想。',
+      },
+      {
+        id: 'd191_v4',
+        word: 'träumen',
+        meaning: '做夢、夢想（動詞三態：träumt, träumte, hat geträumt + von + Dat）',
+        ipa: '/ˈtʁɔɪ̯mən/',
+        example: 'Er träumt seit seiner Kindheit davon, Musiker zu werden.',
+        exampleTr: '他從小就夢想著成為一名音樂家。',
+      },
+      {
+        id: 'd191_v5',
+        word: 'ersehnen',
+        meaning: '渴望得到、翹首盼望（動詞三態：ersehnt, ersehnte, hat ersehnt）',
+        ipa: '/ɛɐ̯ˈzeːnən/',
+        example: 'Nach monatelanger Dürre kam der lang ersehnte Regen.',
+        exampleTr: '歷經數月乾旱之後，盼望已久的甘霖終於降臨。',
+      },
+      {
+        id: 'd191_v6',
+        word: 'unerreichbar',
+        meaning: '高不可攀的、難以企及的、無法達到的',
+        ipa: '/ˈʊnfɛɐ̯ˌʔaɪ̯çbaːɐ̯/',
+        example: 'Manche Ziele scheinen anfangs unerreichbar weit weg.',
+        exampleTr: '有些目標剛開始看似高不可攀、遙不可及。',
+      },
+      {
+        id: 'd191_v7',
+        word: 'optimal',
+        meaning: '最佳的、理想無比的',
+        ipa: '/ɔptiˈmaːl/',
+        example: 'Die Bedingungen für unseren Segeltörn wären heute absolut optimal.',
+        exampleTr: '今天出海航行的條件本來是絕對完美的。',
+      },
+    ],
+    listening: {
+      title: '咖啡館閒聊：如果中了一百萬樂透彩券',
+      dialogue: [
+        {
+          speaker: 'Fabian',
+          de: 'Mensch Paula, schau mal: Der Eurojackpot steht bei 90 Millionen Euro!',
+          zh: '天啊 Paula，妳看：歐洲樂透獎金累積到了 9000 萬歐元！',
+        },
+        {
+          speaker: 'Paula',
+          de: 'Wahnsinn! Wenn ich doch bloß dieses Geld gewinnen würde!',
+          zh: '太瘋狂了！我要是能中這筆錢該多好啊！',
+        },
+        {
+          speaker: 'Fabian',
+          de: 'Was würdest du denn als Erstes tun, wenn du plötzlich so reich wärst?',
+          zh: '如果妳突然變得這麼有錢，妳第一件事會做什麼？',
+        },
+        {
+          speaker: 'Paula',
+          de: 'Hätte ich so viel Geld, würde ich sofort meinen Job kündigen und eine Stiftung für Straßenhunde gründen.',
+          zh: '要是我有這麼多錢，我會立刻辭掉工作，為流浪狗創立一個基金會。',
+        },
+        {
+          speaker: 'Fabian',
+          de: 'Und ich wünschte, ich könnte mir ein kleines Holzhaus in den Schweizer Bergen kaufen und den ganzen Tag Bücher schreiben.',
+          zh: '而我真希望我能在瑞士山區買一棟小木屋，整天在裡面寫書。',
+        },
+        {
+          speaker: 'Paula',
+          de: 'Träumen darf man ja! Aber jetzt müssen wir erst mal wieder an die Arbeit.',
+          zh: '做做美夢總是無妨的！但現在我們還是先回去幹活吧。',
+        },
+      ],
+      questions: [
+        {
+          id: 'd191_lq1',
+          question: 'Was würde Paula tun, wenn sie den Jackpot gewinnen würde?',
+          options: [
+            'Ein riesiges Auto kaufen.',
+            'Ihren Job kündigen und eine Stiftung für Straßenhunde gründen.',
+            'Das Geld auf der Bank liegen lassen.',
+            'In die Schweizer Berge ziehen.',
+          ],
+          correctIndex: 1,
+          explanation: 'Paula 回答「würde ich sofort meinen Job kündigen und eine Stiftung für Straßenhunde gründen」。',
+        },
+        {
+          id: 'd191_lq2',
+          question: 'Welche Form drückt Fabians Satz „Und ich wünschte, ich könnte mir... kaufen“ aus?',
+          options: [
+            'Einen realen Plan für den heutigen Abend.',
+            'Einen irrealen Wunschtraum im Konjunktiv II.',
+            'Eine Reklamation beim Chef.',
+            'Einen Befehl an Paula.',
+          ],
+          correctIndex: 1,
+          explanation: 'Fabian 使用「Ich wünschte, ich könnte...」表達虛擬二式美好願望。',
+        },
+      ],
+    },
+    speaking: {
+      title: '願望與夢想表達模組 (Wünsche und Träume formulieren)',
+      targetSentences: [
+        {
+          de: 'Wenn ich doch nur mehr Zeit zum Reisen hätte!',
+          zh: '要是我能有更多時間去旅行該多好啊！',
+          phoneticTips: 'Wenn ich doch NUR... 感嘆語調上揚',
+        },
+        {
+          de: 'Wäre ich bloß zehn Zentimeter größer!',
+          zh: '要是我能高個十公分該多好啊！',
+          phoneticTips: 'Wä-re ich BLOß 動詞置首重讀信號詞',
+        },
+        {
+          de: 'Ich wünschte, wir könnten dieses wunderschöne Wochenende verlängern.',
+          zh: '我真希望我們能把這個美好週末延長幾天。',
+          phoneticTips: 'Ich WÜNSCH-te 溫柔憧憬語氣',
+        },
+        {
+          de: 'Hätten wir doch damals das Angebot angenommen!',
+          zh: '要是我當時接受了那個提議該多好啊！',
+          phoneticTips: 'Hät-ten wir doch... 過去遺憾願望',
+        },
+      ],
+      rolePlay: {
+        scenario: '課堂自由交談：分享一個遙不可及但美麗的願望',
+        role: '德語學員',
+        prompt: '在學習小組中分享你的心願：如果時間可以倒流，或者如果擁有一年帶薪長假，你會做什麼？使用 wenn doch / bloß。',
+        modelAnswer:
+          'Wenn ich doch ein ganzes Jahr bezahlten Urlaub hätte! Ich würde mir ein altes Wohnmobil kaufen und ganz Südamerika von Norden nach Süden bereisen. Ich wünschte, ich könnte dort alle spanischen Dialekte lernen und täglich am Lagerfeuer Gitarre spielen.',
+      },
+    },
+    reading: {
+      title: '現代散文精讀：如果能讓時間暫停片刻...',
+      documentType: 'Essay',
+      content:
+        'GEDANKEN AM ABEND: WENN DIE ZEIT STILLSTEHEN KÖNNTE...\n\nIn unserer hektischen Leistungsgesellschaft hetzen wir von Termin zu Termin. Der Wecker reißt uns morgens aus dem Schlaf, die E-Mails diktieren den Rhythmus des Tages. Wie oft ertappt man sich bei dem Gedanken:\n\n„Wenn ich die Uhr doch bloß für einen einzigen Tag anhalten könnte! Wenn das Handy nur für 24 Stunden stumm bliebe!“\n\nWas würden wir tun mit dieser geschenkten Zeit? Wir würden nicht etwa mehr arbeiten. Wir säßen vielleicht schweigend auf einer Parkbank, lauschten dem Rascheln der Blätter und tränken Tee mit einem alten Freund, ohne ständig auf die Armbanduhr zu blicken.\n\nSolche Wunschträume spiegeln die tiefe Sehnsucht des modernen Menschen nach innerer Ruhe wider. Sie erinnern uns daran, dass wir die Zeit zwar nicht anhalten, aber ihre flüchtigen Augenblicke bewusster erleben können.',
+      translation:
+        '晚間隨筆：如果時間能夠停下腳步...\n\n在我們講求績效的匆忙社會中，我們在一個又一個預約日程間奔波。清晨鬧鐘將我們從睡夢中拽醒，電子郵件支配著整日的節奏。我們有多少次在心底浮現出這樣的念頭：\n\n「要是我就算只能讓時鐘暫停哪怕一天該多好啊！要是手機哪怕只靜音 24 個小時該多好啊！」\n\n面對這份被饋贈的光陰，我們會做些什麼呢？我們絕不會去加更多班。我們也許會靜默地坐在公園長椅上，傾聽樹葉沙沙作響，並與一位老友品茗長談，而不用頻頻盯著手錶。\n\n這樣的願望與夢想，反映了現代人對內心平靜的深層渴望。它們提醒著我們：雖然我們無法攔截時間的腳步，但我們能更有知覺地去體驗每一個流逝的瞬間。',
+      glossary: {
+        'hektisch': { pos: 'Adj.', meaning: '匆忙焦躁的、忙亂的' },
+        'die Leistungsgesellschaft': { pos: 'die', meaning: '注重績效的社會' },
+        'anhalten': { pos: 'Verb', meaning: '使停止、叫停' },
+        'flüchtig': { pos: 'Adj.', meaning: '短暫的、轉瞬即逝的' },
+      },
+      questions: [
+        {
+          id: 'd191_rq1',
+          question: 'Was wünscht sich der Autor des Essays in der Hektik des Alltags?',
+          options: [
+            'Einen schnelleren Computer zu kaufen.',
+            'Dass die Uhr für einen Tag stillsteht und das Handy stumm bleibt.',
+            'Noch mehr Überstunden zu machen.',
+            'Für immer im Büro zu wohnen.',
+          ],
+          correctIndex: 1,
+          explanation: '文章明確寫道「Wenn ich die Uhr doch bloß für einen einzigen Tag anhalten könnte! Wenn das Handy nur... stumm bliebe!」。',
+        },
+        {
+          id: 'd191_rq2',
+          question: 'Welche grammatische Form verwendet der Satz „Wenn ich die Uhr doch bloß... anhalten könnte!“?',
+          options: [
+            'Einen realen Konditionalsatz mit Indikativ.',
+            'Einen irrealen Wunschsatz mit Konjunktiv II und dem Signalwort „bloß“.',
+            'Einen Fragesatz mit Fragewort.',
+            'Einen Imperativsatz mit Höflichkeitsform.',
+          ],
+          correctIndex: 1,
+          explanation: '這是非真實願望句，由 wenn + bloß + Konjunktiv II（könnte）構成，句末帶驚嘆號。',
+        },
+      ],
+    },
+    quiz: {
+      title: '非真實願望句語法辨析小測驗',
+      questions: [
+        {
+          id: 'd191_q1',
+          question: '非真實願望句「Wenn ich doch nur reich _______!」空格處應填入：',
+          options: ['bin', 'wäre', 'sei', 'wurde'],
+          correctIndex: 1,
+          explanation: '表達現在非真實願望，sein 的虛擬二式是 wäre（Wenn ich doch nur reich wäre!）。',
+        },
+        {
+          id: 'd191_q2',
+          question: '將「Wenn er doch bloß Zeit hätte!」改寫為動詞置首結構，正確的是：',
+          options: [
+            'Hätte er doch bloß Zeit!',
+            'Hat er doch bloß Zeit!',
+            'Habe er doch bloß Zeit!',
+            'Zeit hätte er doch bloß!',
+          ],
+          correctIndex: 0,
+          explanation: '動詞置首願望句：省略 wenn，將變位動詞 Hätte 移至句首第一位。',
+        },
+        {
+          id: 'd191_q3',
+          question: '非真實願望句在句子標點符號上有何特殊硬性規定？',
+          options: [
+            '句尾必須使用問號（?）',
+            '句尾必須使用驚嘆號（!）',
+            '不能有任何標點符號',
+            '必須用雙引號括起來',
+          ],
+          correctIndex: 1,
+          explanation: '非真實願望句表達強烈的情感渴望與感嘆，語法上規定句尾必須使用驚嘆號（!）。',
+        },
+        {
+          id: 'd191_q4',
+          question: '在願望句中，常出現的語氣加強信號詞是：',
+          options: [
+            'doch / bloß / nur',
+            'nicht / nie / niemand',
+            'sehr / extrem / total',
+            'oder / aber / und',
+          ],
+          correctIndex: 0,
+          explanation: 'doch, bloß 與 nur 是願望句的靈魂三劍客，意為「要是...該有多好啊」。',
+        },
+      ],
+    },
+    examTip: {
+      skill: 'Schreiben',
+      title: '願望句審題警報：千萬別忘了那個 Umlaut（變音符號）！',
+      content:
+        '在德語檢定填空與寫作中，寫願望句最容易丟冤枉分的就是忘了加變音符號！\n- war（過去式）-> wÄre（虛擬二式）\n- hatte（過去式）-> hÄtte（虛擬二式）\n- konnte（過去式）-> kÖnnte（虛擬二式）\n少兩點，整句話就從「虛擬二式（夢想）」降級成「過去式（客觀事實）」，意思全毀！請務必用火眼金睛檢查 ä, ö, ü！',
+    },
+  },
+
+  192: {
+    day: 192,
+    stage: 'B1',
+    week: 28,
+    dayOfWeek: 3,
+    title: 'Ratschläge & Empfehlungen mit sollte 給予建議與諮詢',
+    germanTitle: 'B1-Ratschläge: Empfehlungen geben mit „sollte“ und „An deiner Stelle...“',
+    theme: '給予委婉中肯建議：情態動詞 sollte（sollen 的虛擬二式）與經典代入結構 An deiner Stelle würde ich...；朋友諮詢、就醫保健與職涯建議情境',
+    estimatedMinutes: 20,
+    grammar: {
+      title: '建議表達句型體系：sollte vs. An deiner Stelle (Ratschläge erteilen)',
+      explanation:
+        '在日常生活、職場交流與歌德 B1 口說第三部分中，當夥伴面臨困難或向你徵求意見時，直接用命令式（„Geh zum Arzt!“）或情態動詞 müssen（„Du musst...“）會給人高高在上的壓迫感。德國人一律偏好使用虛擬二式的「溫和建議體系」。\n1.【情態動詞：sollte（應該/最好...）】\n  - 構成注意：sollen 的虛擬二式【不加變音符號（kein Umlaut！）】！\n    * ich sollte, du solltest, er sollte, wir sollten, ihr solltet, sie/Sie sollten\n  - 句型：Subjekt + sollte + ... + Infinitiv am Ende\n    * „Du [solltest] dich nach der Arbeit mehr [ausruhen].“ (你下班後應該多休息)\n    * „Sie [sollten] diesen Vertrag nicht voreilig [unterschreiben].“ (您最好不要匆忙簽署這份合約)\n2.【換位思考結構：An deiner Stelle würde ich...（如果我是你的話...）】\n  - 這是德語最高級、最富同理心的建議句型：\n    * „[An deiner Stelle würde ich] sofort mit dem Chef sprechen.“ (如果我是你，我會立刻跟主管談談)\n    * „[An Ihrer Stelle würde ich] mir eine zweite ärztliche Meinung einholen.“ (如果是您這種情況，我會去尋求第二位醫生的專業意見)\n3.【其他實用建議 Redemittel】\n  - Ich empfehle dir / Ihnen, ... zu + Infinitiv: „Ich empfehle Ihnen, frühzeitig zu buchen.“\n  - Es wäre ratsam / sinnvoll, wenn...: „Es wäre sinnvoll, wenn wir einen Plan B hätten.“',
+      ruleExample: [
+        { de: 'Du solltest bei diesem Fieber unbedingt im Bett bleiben und viel Tee trinken.', zh: '你發燒發成這樣，務必要臥床休息並多喝茶。', note: 'du solltest (溫和關切建議)' },
+        { de: 'An deiner Stelle würde ich die Wohnung sofort mieten, die Lage ist traumhaft.', zh: '如果我是你，我會立刻租下這間公寓，地段簡直夢幻。', note: 'An deiner Stelle würde ich... (同理代入)' },
+        { de: 'Wir sollten vielleicht zuerst die Kosten berechnen, bevor wir bestellen.', zh: '在下單之前，我們也許最好先計算一下成本。', note: 'wir sollten vielleicht (團隊委婉提議)' },
+        { de: 'Es wäre empfehlenswert, eine Reiserücktrittsversicherung abzuschließen.', zh: '投保一份行程取消保險將會是值得推薦的。', note: 'es wäre empfehlenswert (客觀建議)' },
+      ],
+    },
+    vocabulary: [
+      {
+        id: 'd192_v1',
+        word: 'der Ratschlag',
+        article: 'der',
+        plural: 'die Ratschläge',
+        meaning: '建議、勸告',
+        ipa: '/ˈʁaːtˌʃlaːk/',
+        example: 'Er gab mir einen wertvollen Ratschlag für das Vorstellungsgespräch.',
+        exampleTr: '他為我的面試提供了一個寶貴的建議。',
+      },
+      {
+        id: 'd192_v2',
+        word: 'die Empfehlung',
+        article: 'die',
+        plural: 'die Empfehlungen',
+        meaning: '推薦、推薦信、建議',
+        ipa: '/ɛmˈp͡feːlʊŋ/',
+        example: 'Auf Empfehlung meines Arztes nehme ich nun täglich Vitamin D.',
+        exampleTr: '在醫生的建議下，我現在每天服用維生素 D。',
+      },
+      {
+        id: 'd192_v3',
+        word: 'die Alternative',
+        article: 'die',
+        plural: 'die Alternativen',
+        meaning: '替代方案、選擇',
+        ipa: '/altɛʁnaˈtiːvə/',
+        example: 'Gibt es eine kostengünstigere Alternative zu diesem Produkt?',
+        exampleTr: '這項產品是否有更具性價比的替代方案？',
+      },
+      {
+        id: 'd192_v4',
+        word: 'raten',
+        meaning: '建議、勸告；猜測（動詞三態：rät, riet, hat geraten + Dat）',
+        ipa: '/ˈʁaːtn̩/',
+        example: 'Ich rate dir dringend dazu, professionelle Hilfe in Anspruch zu nehmen.',
+        exampleTr: '我強烈建議你尋求專業協助。',
+      },
+      {
+        id: 'd192_v5',
+        word: 'vorschlagen',
+        meaning: '建議、提議（動詞三態：schlägt vor, schlug vor, hat vorgeschlagen）',
+        ipa: '/ˈfoːɐ̯ˌʃlaːɡn̩/',
+        example: 'Darf ich einen alternativen Zeitplan vorschlagen?',
+        exampleTr: '請允許我提議一個備選時間表好嗎？',
+      },
+      {
+        id: 'd192_v6',
+        word: 'empfehlenswert',
+        meaning: '值得推薦的、可取的',
+        ipa: '/ɛmˈp͡feːlənsˌveːɐ̯t/',
+        example: 'Ein Besuch des Pergamonmuseums in Berlin ist absolut empfehlenswert.',
+        exampleTr: '參觀柏林佩加蒙博物館是絕對值得推薦的。',
+      },
+      {
+        id: 'd192_v7',
+        word: 'ratsam',
+        meaning: '明智的、得當的、明智之舉',
+        ipa: '/ˈʁaːtzaːm/',
+        example: 'Es ist ratsam, vor Antritt der Wanderung wetterfeste Kleidung einzupacken.',
+        exampleTr: '在出發健行之前打包防風雨衣物是明智之舉。',
+      },
+    ],
+    listening: {
+      title: '好友談心：職場瓶頸與租屋糾紛同理建議',
+      dialogue: [
+        {
+          speaker: 'Sven',
+          de: 'Hallo Nina, du siehst heute so erschöpft aus. Ist alles in Ordnung?',
+          zh: '哈囉 Nina，妳今天看起來好疲倦。一切都還好嗎？',
+        },
+        {
+          speaker: 'Nina',
+          de: 'Nicht wirklich. Mein Vermieter will die Miete schon wieder um 15 % erhöhen und im Büro stapelt sich die Arbeit.',
+          zh: '不太好。我房東又想把房租漲 15%，而且辦公室的工作堆積如山。',
+        },
+        {
+          speaker: 'Sven',
+          de: 'Oje, das klingt nach einer Menge Stress! Was die Miete betrifft: An deiner Stelle würde ich sofort dem Mieterschutzbund beitreten.',
+          zh: '天啊，這聽起來壓力真大！關於房租：如果我是妳，我會立刻加入租客權益保護協會。',
+        },
+        {
+          speaker: 'Nina',
+          de: 'Meinst du, die können mir wirklich helfen?',
+          zh: '你覺得他們真的能幫到我嗎？',
+        },
+        {
+          speaker: 'Sven',
+          de: 'Ganz bestimmt! Die prüfen die Mieterhöhung juristisch. Und was die Überstunden angeht: Du solltest offen mit deinem Teamleiter sprechen.',
+          zh: '絕對可以！他們會在法律層面審查漲租合法性。至於加班：妳應該坦誠地與妳的組長談談。',
+        },
+        {
+          speaker: 'Nina',
+          de: 'Du hast recht. Ich sollte nicht alles stillschweigend hinnehmen. Danke für deine Ratschläge!',
+          zh: '你說得對。我不應該默默忍受一切。謝謝你的中肯建議！',
+        },
+      ],
+      questions: [
+        {
+          id: 'd192_lq1',
+          question: 'Welchen Ratschlag gibt Sven bezüglich der Mieterhöhung?',
+          options: [
+            'Die Miete sofort ohne Fragen zu bezahlen.',
+            'Dem Mieterschutzbund beizutreten.',
+            'Die Wohnung in Brand zu stecken.',
+            'In ein Hotel zu ziehen.',
+          ],
+          correctIndex: 1,
+          explanation: 'Sven 建議「An deiner Stelle würde ich sofort dem Mieterschutzbund beitreten」。',
+        },
+        {
+          id: 'd192_lq2',
+          question: 'Was empfiehlt Sven Nina für ihre Arbeitssituation?',
+          options: [
+            'Sofort zu kündigen ohne neues Angebot.',
+            'Offen mit dem Teamleiter über die Überlastung zu sprechen.',
+            'Niemals wieder zur Arbeit zu gehen.',
+            'Kollegen die Arbeit heimlich zuzuschieben.',
+          ],
+          correctIndex: 1,
+          explanation: 'Sven 建議「Du solltest offen mit deinem Teamleiter sprechen」。',
+        },
+      ],
+    },
+    speaking: {
+      title: '給予中肯建議與換位思考口語練習 (Ratschläge formulieren)',
+      targetSentences: [
+        {
+          de: 'An deiner Stelle würde ich mir professionellen Rechtsrat einholen.',
+          zh: '如果我是你，我會去尋求專業的法律諮詢。',
+          phoneticTips: 'An dei-ner STEL-le wür-de ich 語氣真誠關切',
+        },
+        {
+          de: 'Du solltest dich heute früher hinlegen, du siehst blass aus.',
+          zh: '你今天應該早點躺下休息，你看起來臉色蒼白。',
+          phoneticTips: 'SOLL-test dich 自然重讀',
+        },
+        {
+          de: 'Es wäre vielleicht besser, wenn wir den Termin um eine Woche verschöben.',
+          zh: '如果我們把預約順延一週，也許會更好。',
+          phoneticTips: 'Es wä-re viel-leicht bet-ter 委婉協商句型',
+        },
+        {
+          de: 'Ich kann Ihnen nur wärmstens empfehlen, diesen Sprachkurs zu belegen.',
+          zh: '我只能熱烈推薦您去選修這門語言課。',
+          phoneticTips: 'wär-mstens em-PFEH-len 誠摯推薦',
+        },
+      ],
+      rolePlay: {
+        scenario: 'B1 口說 Teil 3 協商模擬：搭檔感到準備考試時間不足',
+        role: '學習夥伴',
+        prompt: '你的搭檔抱怨每天工作太忙，沒時間背單字感到焦慮。請用 sollte 與 An deiner Stelle 給出 2 個切實可行的時間管理建議。',
+        modelAnswer:
+          'Ich verstehe deine Sorgen vollkommen, aber lass den Kopf nicht hängen! An deiner Stelle würde ich mir feste Lernfenster einrichten – zum Beispiel morgens 20 Minuten in der Bahn mit einer Vokabel-App. Außerdem solltest du am Wochenende einen Probetest unter realen Bedingungen machen. So gewinnst du schnell Selbstvertrauen!',
+      },
+    },
+    reading: {
+      title: '生活健康雜誌專欄：擊退現代人慢性失眠的六項黃金建議',
+      documentType: 'Gesundheitsratgeber',
+      content:
+        'VITAL-MAGAZIN: BESSER SCHLAFEN IN ZEITEN VON DAUERSTRESS\n\nMillionen Menschen in den deutschsprachigen Ländern leiden unter Schlafstörungen. Schlafforscher betonen: Bevor man zu Schlaftabletten greift, sollte man die eigene Schlafhygiene gründlich überprüfen.\n\nFolgende Empfehlungen sollten Sie beherzigen:\n\n1. Digitale Entgiftung am Abend:\nSie sollten mindestens eine Stunde vor dem Schlafengehen Bildschirme von Smartphone, Tablet und Fernseher ausschalten. Das blaue Licht hemmt die Melatoninproduktion.\n\n2. Optimale Raumtemperatur:\nDie Temperatur im Schlafzimmer sollte idealerweise zwischen 16 und 18 Grad Celsius liegen. Frische Luft vor dem Zubettgehen ist ratsam.\n\n3. An Ihrer Stelle würden Experten auf Koffein nach 15 Uhr verzichten:\nKaffee und Energy-Drinks haben eine lange Halbwertszeit im Blut.\n\nWer diese Ratschläge über mehrere Wochen diszipliniert befolgt, stellt schnell fest: Ein erholsamer Schlaf ist die wirksamste Medizin für Körper und Geist.',
+      translation:
+        '《活力》雜誌：在持續壓力時代睡個好覺\n\n德語國家有數百萬人受失眠困擾。睡眠研究學者強調：在求助於安眠藥之前，應先徹底檢視自身的睡眠衛生習慣。\n\n您應當牢記以下建議：\n\n1. 晚間數位排毒：\n您應當在就寢前至少一小時關閉智慧型手機、平板與電視螢幕。藍光會抑制褪黑激素分泌。\n\n2. 最佳室內溫度：\n臥室溫度理想上應維持在攝氏 16 至 18 度之間。睡前開窗通風換氣是明智之舉。\n\n3. 如果專家處在您的位置，會建議下午 3 點後戒絕咖啡因：\n咖啡與能量飲料在血液中具有很長的半衰期。\n\n凡能自律遵循這些建議數週的人很快會發現：恢復元氣的優質睡眠是身心最強效的良藥。',
+      glossary: {
+        'die Schlafhygiene': { pos: 'die', meaning: '睡眠衛生、良好作息習慣' },
+        'beherzigen': { pos: 'Verb', meaning: '銘記在心、聽從（建議）' },
+        'hemmen': { pos: 'Verb', meaning: '阻礙、抑制' },
+        'die Halbwertszeit': { pos: 'die', meaning: '半衰期' },
+      },
+      questions: [
+        {
+          id: 'd192_rq1',
+          question: 'Warum sollte man laut Text vor dem Schlafen keine Bildschirme mehr nutzen?',
+          options: [
+            'Weil die Geräte Strom verschwenden.',
+            'Weil das blaue Licht die Produktion von Melatonin hemmt.',
+            'Weil Fernseher nachts explodieren können.',
+            'Weil das Internet um 22 Uhr abgestellt wird.',
+          ],
+          correctIndex: 1,
+          explanation: '專欄第 1 點指出「Das blaue Licht hemmt die Melatoninproduktion」。',
+        },
+        {
+          id: 'd192_rq2',
+          question: 'Welche grammatische Form hat der Satz „Die Temperatur sollte zwischen 16 und 18 Grad liegen“?',
+          options: [
+            'Eine Befehlsform für Hunde.',
+            'Eine Empfehlung mit dem Konjunktiv II des Modalverbs „sollen“ (sollte).',
+            'Eine reale Vergangenheit im Perfekt.',
+            'Ein Passivsatz der Zukunft.',
+          ],
+          correctIndex: 1,
+          explanation: 'sollte 是情態動詞 sollen 的虛擬二式形式，用來提出客觀得體的建議。',
+        },
+      ],
+    },
+    quiz: {
+      title: '建議表達句型與語法辨析測驗',
+      questions: [
+        {
+          id: 'd192_q1',
+          question: '情態動詞「sollen」在虛擬二式現在式中的第一人稱單數（ich）形式是：',
+          options: ['söllte', 'sollte', 'wäre gesollt', 'sollt'],
+          correctIndex: 1,
+          explanation: '記住鐵律：sollen 的虛擬二式「不加變音（kein Umlaut）」！因此是 ich sollte。',
+        },
+        {
+          id: 'd192_q2',
+          question: '「An deiner Stelle _______ ich den Arzt anrufen.」空格應填入：',
+          options: ['habe', 'würde', 'werde', 'wäre'],
+          correctIndex: 1,
+          explanation: '經典換位建議公式：An deiner Stelle würde ich... + Infinitiv。',
+        },
+        {
+          id: 'd192_q3',
+          question: '動詞「raten」（建議）接格為：我建議你（du）做這件事。正確句子是：',
+          options: [
+            'Ich rate dich, das zu tun.',
+            'Ich rate dir, das zu tun.',
+            'Ich rate deiner, das zu tun.',
+            'Ich rate du, das zu tun.',
+          ],
+          correctIndex: 1,
+          explanation: 'jemandem (Dativ) raten，du 的第三格與格形式為 dir。',
+        },
+        {
+          id: 'd192_q4',
+          question: '在給朋友提建議時，哪一種說法既客氣又富有同理心？',
+          options: [
+            'Du bist faul, mach sofort Sport!',
+            'Du musst tun, was ich sage.',
+            'Du solltest vielleicht etwas mehr spazieren gehen, das tut dir sicher gut.',
+            'Mir ist dein Leben völlig egal.',
+          ],
+          correctIndex: 2,
+          explanation: '「Du solltest vielleicht... das tut dir sicher gut」委婉、充滿關懷且不具冒犯性。',
+        },
+      ],
+    },
+    examTip: {
+      skill: 'Sprechen',
+      title: 'B1 口說 Teil 3 滿分催化劑：用「An deiner Stelle würde ich...」展現同理心',
+      content:
+        '在歌德 B1 口說第三部分協商環節中，當搭檔說出困難（如：Ich habe am Samstagvormittag keine Zeit, weil ich arbeiten muss），很多考生只會乾巴巴地說「Okay, dann Sonntag」。如果你能接上一句：「Das verstehe ich gut. An deiner Stelle würde ich auch nicht am Wochenende arbeiten wollen. Wollen wir es stattdessen am Montagabend machen?」，考官會認為你的交際與同理能力已完全達到 B2 水平！',
+    },
+  },
+
+  193: {
+    day: 193,
+    stage: 'B1',
+    week: 28,
+    dayOfWeek: 4,
+    title: 'Irreale Bedingungen der Gegenwart 現在非真實條件句',
+    germanTitle: 'B1-Konditionalsätze: Irreale Bedingungen der Gegenwart (Wenn..., dann...)',
+    theme: '現在非真實條件句（Irreale Konditionalsätze der Gegenwart）：假設與現實相反的情況（Wenn + Konjunktiv II, (dann) + Konjunktiv II）；科幻假設、生態保護與人生選擇思考',
+    estimatedMinutes: 20,
+    grammar: {
+      title: '非真實條件句語法結構與動詞位置 (Irreale Konditionalsätze)',
+      explanation:
+        '當我們做出「如果某個條件在現在成立（但現實中並非如此），就會產生某種結果」的假設時，德語使用「現在非真實條件句」。\n1.【基本結構：Wenn-Satz（從句）+ Hauptsatz（主句）】\n  - 從句：Wenn + [Subjekt] + ... + [Konjunktiv II am Satzende]\n  - 主句：[dann / so] + [Konjunktiv II] + [Subjekt] + ...\n  - 例句：\n    * „Wenn ich reich [wäre], [würde] ich ein Schloss kaufen.“ (要是我有錢，我就會買一座城堡。現實：我現在沒錢)\n    * „Wenn das Wetter schön [wäre], [könnten] wir an den Baggersee fahren.“ (要是天氣好，我們就能去湖邊。現實：正在下雨)\n2.【無 Wenn 動詞置首變體（Inversion）】\n  - 省略 wenn 時，變位動詞直接提到從句第一位：\n    * „[Wäre] ich reich, [würde] ich ein Schloss kaufen.“\n    * „[Hätte] ich mehr Zeit, [käme] ich gerne zu deiner Feier.“\n3.【真實條件句（Real）vs. 非真實條件句（Irreal）對比】\n  - 真實條件句（A2）：直陳式現在式，表示現實中完全可能發生的條件。\n    * „Wenn es morgen regnet, [bleibe] ich zu Hause.“ (明天如果下雨我就待在家)\n  - 非真實條件句（B1）：虛擬二式，表示與當前現實相反的純粹假設。\n    * „Wenn es jetzt regnen [würde], [müssten] wir das Spiel abbrechen.“ (現在要是下雨，我們就得中斷比賽。現實：現在萬里無雲)',
+      ruleExample: [
+        { de: 'Wenn ich Bundeskanzler wäre, würde ich mehr in Schulen und Kitas investieren.', zh: '如果我是聯邦總理，我會對學校與托兒所投入更多資源。', note: 'Wenn-從句 wäre 置尾；主句 würde 倒裝' },
+        { de: 'Hätten wir ein größeres Auto, könnten wir alle zusammen in den Urlaub fahren.', zh: '要是我們有一輛更大的車，我們就能全家一起去度假了。', note: '動詞 Hätten 置首結構' },
+        { de: 'Wenn die Menschen weniger Fleisch essen würden, gäbe es weniger Umweltprobleme.', zh: '如果人類少吃點肉，環境問題就會少很多。', note: 'würden essen vs. gäbe es' },
+        { de: 'Was würdest du tun, wenn du für einen Tag unsichtbar wärst?', zh: '如果你能隱形一天，你會做什麼？', note: '非真實條件疑問句' },
+      ],
+    },
+    vocabulary: [
+      {
+        id: 'd193_v1',
+        word: 'die Bedingung',
+        article: 'die',
+        plural: 'die Bedingungen',
+        meaning: '條件、前提條款',
+        ipa: '/bəˈdɪŋʊŋ/',
+        example: 'Unter diesen Bedingungen können wir den Vertrag nicht unterzeichnen.',
+        exampleTr: '在這些條件下我們無法簽署合約。',
+      },
+      {
+        id: 'd193_v2',
+        word: 'die Realität',
+        article: 'die',
+        plural: 'die Realitäten',
+        meaning: '現實、實際情況',
+        ipa: '/ʁealiˈtɛːt/',
+        example: 'Manchmal weicht die Theorie stark von der Realität ab.',
+        exampleTr: '有時理論與現實存在巨大差距。',
+      },
+      {
+        id: 'd193_v3',
+        word: 'die Hypothese',
+        article: 'die',
+        plural: 'die Hypothesen',
+        meaning: '假說、假設性前提',
+        ipa: '/hypoˈteːzə/',
+        example: 'Die Wissenschaftlerin überprüfte ihre Hypothese durch Experimente.',
+        exampleTr: '女科學家透過實驗驗證了她的假說。',
+      },
+      {
+        id: 'd193_v4',
+        word: 'annehmen',
+        meaning: '假設、推定；接受（動詞三態：nimmt an, nahm an, hat angenommen）',
+        ipa: '/ˈanˌneːmən/',
+        example: 'Nehmen wir einmal an, Sie hätten unbegrenzte finanzielle Mittel...',
+        exampleTr: '讓我們假設一下，如果您擁有無上限的資金...',
+      },
+      {
+        id: 'd193_v5',
+        word: 'hypothetisch',
+        meaning: '假設性的、假定的',
+        ipa: '/hypoˈteːtɪʃ/',
+        example: 'Das ist eine rein hypothetische Frage.',
+        exampleTr: '這純粹是一個假設性的問題。',
+      },
+      {
+        id: 'd193_v6',
+        word: 'unvorstellbar',
+        meaning: '難以想像的、不可思議的',
+        ipa: '/ˈʊnfoːɐ̯ˌʃtɛlbaːɐ̯/',
+        example: 'Ein Leben ohne Internet ist für Jugendliche heute unvorstellbar.',
+        exampleTr: '沒有網路的生活對現今青少年而言是難以想像的。',
+      },
+      {
+        id: 'd193_v7',
+        word: 'tatsächlich',
+        meaning: '實際上的、真實的、的確',
+        ipa: '/tatˈzɛçlɪç/',
+        example: 'Hat er den Test tatsächlich mit voller Punktzahl bestanden?',
+        exampleTr: '他真的以滿分通過了測驗嗎？',
+      },
+    ],
+    listening: {
+      title: '環境論壇思辨：如果城市裡徹底沒有私家車',
+      dialogue: [
+        {
+          speaker: 'Leonie',
+          de: 'Paul, hast du das Gedankenexperiment der Stadtplaner gelesen? Was wäre, wenn es ab morgen keine privaten Autos mehr in den Innenstädten gäbe?',
+          zh: 'Paul，你有讀城市規劃師的思想實驗嗎？如果從明天起市中心不再有私家車，會變成怎樣？',
+        },
+        {
+          speaker: 'Paul',
+          de: 'Das wäre revolutionär! Wenn keine Autos mehr herumführen, hätten wir viel mehr Platz für Parks, Straßencafés und sichere Radwege.',
+          zh: '那將會是顛覆性的！如果不再有汽車穿梭，我們就會有更多空間建造公園、街邊露天咖啡座和安全的自行車道。',
+        },
+        {
+          speaker: 'Leonie',
+          de: 'Aber wie würden ältere oder gehbehinderte Menschen dann zu ihren Arztterminen kommen?',
+          zh: '但老年人或行動不便的人之後要怎麼去診所看病呢？',
+        },
+        {
+          speaker: 'Paul',
+          de: 'Wenn alle privaten Autos verboten wären, könnte die Stadt autonome, kostenlose E-Shuttles auf Abruf bereitstellen.',
+          zh: '如果所有私家車都被禁止，市政府就可以提供隨叫隨到的全自動無人駕駛免費電動接駁車。',
+        },
+        {
+          speaker: 'Leonie',
+          de: 'Stimmt! Die Luft wäre sauberer und der Verkehrslärm würde komplett verschwinden.',
+          zh: '沒錯！空氣會更清新，交通噪音也會徹底消失。',
+        },
+        {
+          speaker: 'Paul',
+          de: 'Genau. Wenn die Politik mutiger wäre, könnten wir diesen Traum schon viel schneller verwirklichen.',
+          zh: '正是。如果政界更有勇氣，我們就能更快實現這個夢想。',
+        },
+      ],
+      questions: [
+        {
+          id: 'd193_lq1',
+          question: 'Welchen Vorteil einer autofreien Stadt nennt Paul?',
+          options: [
+            'Man müsste nie wieder Sport machen.',
+            'Mehr Platz für Parks, Straßencafés und sichere Radwege.',
+            'Alle Wohnungen würden kostenlos.',
+            'Es gäbe keinen Winter mehr.',
+          ],
+          correctIndex: 1,
+          explanation: 'Paul 提到「hätten wir viel mehr Platz für Parks, Straßencafés und sichere Radwege」。',
+        },
+        {
+          id: 'd193_lq2',
+          question: 'Welche grammatische Form verwenden die beiden während des gesamten Gesprächs?',
+          options: [
+            'Das Perfekt für vergangene Tatsachen.',
+            'Den Konjunktiv II für hypothetische Bedingungen und Folgen der Gegenwart.',
+            'Das Passiv Präteritum.',
+            'Den Imperativ.',
+          ],
+          correctIndex: 1,
+          explanation: '整段對話探討假設情境，廣泛使用虛擬二式非真實條件句（Wenn... gäbe / wäre / könnte）。',
+        },
+      ],
+    },
+    speaking: {
+      title: '非真實條件句操練 (Irreale Bedingungen formulieren)',
+      targetSentences: [
+        {
+          de: 'Wenn ich mehr Zeit hätte, würde ich jede Woche zwei Bücher lesen.',
+          zh: '如果我有更多時間，我每週會讀兩本書。',
+          phoneticTips: 'Wenn... HÄT-te, WÜR-de ich 形成韻律對照',
+        },
+        {
+          de: 'Wäre das Ticket günstiger, würden viel mehr Pendler mit der Bahn fahren.',
+          zh: '要是票價更便宜，就會有更多通勤族搭火車。',
+          phoneticTips: 'Wä-re das Ti-cket... 動詞置首流暢',
+        },
+        {
+          de: 'Wenn wir zusammenarbeiten würden, könnten wir das Problem viel schneller lösen.',
+          zh: '如果我們攜手合作，我們就能快得多解決這個問題。',
+          phoneticTips: 'zu-sam-men-ar-bei-ten wür-den 複合動詞置尾',
+        },
+        {
+          de: 'Was würdest du an meiner Stelle in dieser Situation tun?',
+          zh: '在這種情況下，如果你處在我的位置你會怎麼做？',
+          phoneticTips: 'Was WÜR-dest du... 探詢他人假設意見',
+        },
+      ],
+      rolePlay: {
+        scenario: '歌德 B1 口說 Teil 2：專題簡報中的「未來願景假設」',
+        role: '簡報者',
+        prompt: '在關於「環保與節能」的簡報結尾，用非真實條件句描繪如果人人都做出改變，地球會變成什麼樣。',
+        modelAnswer:
+          'Zum Schluss möchte ich Ihnen einen zukunftsweisenden Gedanken mitgeben: Wenn jeder von uns seinen Fleischkonsum nur um die Hälfte reduzieren würde, könnten weltweit riesige Waldflächen gerettet werden. Wenn die Politik erneuerbare Energien konsequenter ausbauen würde, hätten unsere Kinder eine grünere und gesündere Zukunft.',
+      },
+    },
+    reading: {
+      title: '科普專欄深度省思：如果蜜蜂滅絕，世界會怎樣？',
+      documentType: 'Wissenschaftsartikel',
+      content:
+        'GEO-MAGAZIN: WAS WÄRE, WENN DIE BIENEN AUSSTERBEN WÜRDEN?\n\nEin berühmtes, Albert Einstein zugeschriebenes Zitat besagt: „Wenn die Biene von der Erde verschwindet, hat der Mensch nur noch vier Jahre zu leben.“ Ob Einstein diese Worte tatsächlich gewählt hat, ist historisch umstritten, doch die biologische Warnung dahinter ist hochaktuell.\n\nBienen und andere Insekten bestäuben fast 80 Prozent aller Nutz- und Wildpflanzen. Wenn die Bienenpopulationen weltweit komplett zusammenbrechen würden, hätte das katastrophale Folgen für die globale Nahrungsmittelversorgung.\n\nSupermarktregale wären plötzlich erschreckend leer: Äpfel, Erdbeeren, Tomaten, Kaffee und Mandeln gäbe es kaum noch. Die Preise für Grundnahrungsmittel würden explodieren. Ganze Ökosysteme verlören ihr Gleichgewicht.\n\nDieses drastische Szenario verdeutlicht: Der Schutz der kleinsten Lebewesen sichert letztlich das Überleben der menschlichen Zivilisation.',
+      translation:
+        '《GEO》雜誌：如果蜜蜂滅絕，世界將會怎樣？\n\n一句常被歸於愛因斯坦名下的名言說道：「如果蜜蜂從地球上消失，人類就只剩下四年的壽命。」愛因斯坦當年是否真說過這句話在歷史上存有爭議，但其背後的生物學預警卻高度切中當下。\n\n蜜蜂與其他昆蟲為全球近 80% 的農作物與野生植物授粉。如果全球蜜蜂族群徹底崩潰，將對全球糧食供應帶來災難性後果。\n\n超市貨架將會驟然變得觸目驚心般空蕩：蘋果、草莓、番茄、咖啡與杏仁將幾乎不復存在。基本糧食的價格將會暴漲。整個生態系統將喪失平衡。\n\n這個嚴峻的假設情境深刻表明：保護最渺小的生命，歸根結底是在守護人類文明的存續。',
+      glossary: {
+        'die Bienenpopulation': { pos: 'die', meaning: '蜜蜂族群' },
+        'bestäuben': { pos: 'Verb', meaning: '為...授粉' },
+        'zusammenbrechen': { pos: 'Verb', meaning: '崩潰、瓦解 (bricht zusammen)' },
+        'das Gleichgewicht': { pos: 'das', meaning: '平衡、均衡' },
+      },
+      questions: [
+        {
+          id: 'd193_rq1',
+          question: 'Was würde passieren, wenn die Bienen komplett aussterben würden?',
+          options: [
+            'Es gäbe mehr Honig im Supermarkt.',
+            'Supermarktregale wären leer und viele Obst- und Gemüsesorten gäbe es kaum noch.',
+            'Die Menschen würden gesünder leben.',
+            'Alle Insekten würden fliegen lernen.',
+          ],
+          correctIndex: 1,
+          explanation: '科普專文說明「Supermarktregale wären plötzlich erschreckend leer: Äpfel, Erdbeeren, Tomaten... gäbe es kaum noch」。',
+        },
+        {
+          id: 'd193_rq2',
+          question: 'Welche Funktion hat die Wenn-Konstruktion in diesem Text?',
+          options: [
+            'Sie beschreibt ein historisches Ereignis aus dem Jahr 1945.',
+            'Sie stellt ein hypothetisches Zukunftsszenario dar, um die Bedeutung des Artenschutzes zu verdeutlichen.',
+            'Sie kündigt ein neues Gesetz an.',
+            'Sie beschreibt den Bau eines Bienenstocks.',
+          ],
+          correctIndex: 1,
+          explanation: '文章運用虛擬條件句描繪假設性的未來情境，以凸顯物種保護的重要性。',
+        },
+      ],
+    },
+    quiz: {
+      title: '現在非真實條件句語法測驗',
+      questions: [
+        {
+          id: 'd193_q1',
+          question: '「Wenn ich fliegen _______, würde ich sofort nach Italien reisen.」空格應填入：',
+          options: ['kann', 'könnte', 'konnte', 'gekonnt'],
+          correctIndex: 1,
+          explanation: 'können 的虛擬二式是 könnte，表示與現實相反的假設（要是我會飛的話）。',
+        },
+        {
+          id: 'd193_q2',
+          question: '「Hätte ich ein eigenes Haus, _______ ich einen großen Hund adoptieren.」空格應填入：',
+          options: ['würde', 'werde', 'habe', 'hätte'],
+          correctIndex: 0,
+          explanation: '主句動作採用 würde + Infinitiv 構成虛擬二式（würde ich adoptieren）。',
+        },
+        {
+          id: 'd193_q3',
+          question: '真實條件句與非真實條件句最本質的區別在於：',
+          options: [
+            '真實條件句用在過去，非真實條件句用在未來',
+            '真實條件句（Indikativ）表示現實可能發生的情況，非真實條件句（Konjunktiv II）表示與現實相反的假設',
+            '兩者沒有任何區別',
+            '非真實條件句不能加主詞',
+          ],
+          correctIndex: 1,
+          explanation: '真實條件句（直陳式）指客觀現實可能發生；非真實條件句（虛擬態）純粹為與現狀相反的心智假設。',
+        },
+        {
+          id: 'd193_q4',
+          question: '「Wenn es keine Handys _______, würden wir mehr miteinander sprechen.」空格應填入：',
+          options: ['gibt', 'gäbe', 'geben würde', 'hat gegeben'],
+          correctIndex: 1,
+          explanation: 'es gibt 的虛擬二式固定形式為 es gäbe（如果沒有手機的話）。',
+        },
+      ],
+    },
+    examTip: {
+      skill: 'Schreiben',
+      title: '寫作高分秘鑰：在論壇文章中加入「假設性願景句」',
+      content:
+        '歌德 B1 考官在批閱寫作 Teil 2（論壇發文）時，如果整篇只有陳述句，語法等級頂多給到 A2/B1 下限。但如果你在倒數第二句寫入非真實條件句：「Wenn alle Bürger täglich auf Plastiktüten verzichten würden, könnten wir die Meere nachhaltig schützen.」，考官會毫不猶豫在語法豐富度（Grammatische Strukturen）欄位打出最高級距滿分！',
+    },
+  },
+
+  194: {
+    day: 194,
+    stage: 'B1',
+    week: 28,
+    dayOfWeek: 5,
+    title: 'Reklamation & Kundenservice mit Konjunktiv II 客訴與要求改善',
+    germanTitle: 'B1-Schreiben Teil 3 & Kundenservice: Höfliche, aber bestimmte Reklamationen',
+    theme: '向客服與商家正式客訴（Reklamation）：以虛擬二式委婉但堅定地指出商品瑕疵、要求退款（Erstattung）、換貨（Ersatzlieferung）或維修（Reparatur）',
+    estimatedMinutes: 20,
+    grammar: {
+      title: '投訴信函結構與虛擬二式訴求句型 (Höfliche Reklamation)',
+      explanation:
+        '歌德 B1 寫作第三部分（Schreiben Teil 3）常考向主管、房東、學校或客服機構撰寫正式信函（約 40 字）。在處理客訴時，母語者不會使用情緒化的謾罵，而是以「極致客氣的語法結構（Konjunktiv II）提出不可妥協的具體訴求」。\n1.【正式客訴三大主線句型】\n  - 表達遺憾與失望（Enttäuschung ausdrücken）：\n    * „Leider musste ich feststellen, dass das gelieferte Gerät nicht einwandfrei funktioniert.“\n    * „Ich war sehr enttäuscht, als ich das Paket öffnete.“\n  - 具體列出瑕疵問題（Mangel präzise benennen）：\n    * „Das Display weist mehrere Kratzer auf und der Akku lädt nicht.“\n    * „Die Waschmaschine verliert beim Schleudern Wasser.“\n  - 提出解決方案（Forderung mit Konjunktiv II）：\n    * „Ich [wäre] Ihnen sehr dankbar, wenn Sie mir ein Ersatzgerät zusenden [könnten].“\n    * „Ich [würde] mich freuen, wenn Sie den Betrag auf mein Konto zurückerstatten [würden].“\n    * „[Wären] Sie so freundlich, die Reparatur zeitnah zu veranlassen?“\n2.【設定時限與後續動作（Fristsetzung）】\n  - „Ich bitte Sie, das Problem bis zum [Datum] zu beheben.“\n  - „Sollte ich bis dahin nichts von Ihnen hören, sehe ich mich gezwungen, vom Kaufvertrag zurückzutreten.“',
+      ruleExample: [
+        { de: 'Ich wäre Ihnen sehr dankbar, wenn Sie die fehlerhafte Ware umgehend umtauschen könnten.', zh: '若您能立刻更換有瑕疵的商品，我將萬分感激。', note: 'wäre dankbar, wenn... könnten (黃金客訴套句)' },
+        { de: 'Wir würden uns freuen, wenn Sie uns die Reparaturkosten erstatten würden.', zh: '若您能向我們退還維修費用，我們將感到欣喜。', note: 'würden uns freuen, wenn... würden erstatten' },
+        { de: 'Könnten Sie bitte prüfen, warum die Überweisung noch nicht eingegangen ist?', zh: '能否請您核查一下，為何款項尚未入帳？', note: 'könnten Sie bitte prüfen... (委婉督促)' },
+        { de: 'Es wäre sehr entgegenkommend, wenn Sie mir einen Preisnachlass gewähren könnten.', zh: '若您能給予我價格折扣優惠，那將是非常通情達理的做法。', note: 'entgegenkommend (通情達理、體貼讓步)' },
+      ],
+    },
+    vocabulary: [
+      {
+        id: 'd194_v1',
+        word: 'die Reklamation',
+        article: 'die',
+        plural: 'die Reklamationen',
+        meaning: '客訴、投訴、投訴信',
+        ipa: '/ʁeklamaˈt͡si̯oːn/',
+        example: 'Der Kundenservice bearbeitete unsere Reklamation innerhalb von 24 Stunden.',
+        exampleTr: '客戶服務部門在 24 小時內處理了我們的投訴。',
+      },
+      {
+        id: 'd194_v2',
+        word: 'der Kundendienst',
+        article: 'der',
+        plural: 'die Kundendienste',
+        meaning: '客戶服務、售後服務部',
+        ipa: '/ˈkʊndn̩diːnst/',
+        example: 'Ich habe eine halbe Stunde in der Warteschleife des Kundendienstes verbracht.',
+        exampleTr: '我在客服電話的等待線上待了半個小時。',
+      },
+      {
+        id: 'd194_v3',
+        word: 'die Rückerstattung',
+        article: 'die',
+        plural: 'die Rückerstattungen',
+        meaning: '退款、退還金',
+        ipa: '/ˈʁʏkʔɛɐ̯ˌʃtatʊŋ/',
+        example: 'Die Rückerstattung des Kaufpreises erfolgte auf meine Kreditkarte.',
+        exampleTr: '購買款項的退款已退回至我的信用卡中。',
+      },
+      {
+        id: 'd194_v4',
+        word: 'reklamieren',
+        meaning: '投訴、申訴、要求退換（動詞三態：reklamiert, reklamierte, hat reklamiert）',
+        ipa: '/ʁeklaˈmiːʁən/',
+        example: 'Ich habe das beschädigte Paket sofort bei der Post reklamiert.',
+        exampleTr: '我立刻向郵局投訴了那件損壞的包裹。',
+      },
+      {
+        id: 'd194_v5',
+        word: 'erstatten',
+        meaning: '退還、補償、報銷（動詞三態：erstattet, erstattete, hat erstattet）',
+        ipa: '/ɛɐ̯ˈʃtatn̩/',
+        example: 'Die Fluggesellschaft musste den Passagieren die Ticketkosten erstatten.',
+        exampleTr: '航空公司必須向乘客退還機票費用。',
+      },
+      {
+        id: 'd194_v6',
+        word: 'mangelhaft',
+        meaning: '有缺陷的、瑕疵的、不合格的',
+        ipa: '/ˈmaŋl̩haft/',
+        example: 'Die Ware wies gravierende mangelhafte Stellen auf.',
+        exampleTr: '該商品具有嚴重的瑕疵缺陷處。',
+      },
+      {
+        id: 'd194_v7',
+        word: 'zufriedenstellend',
+        meaning: '令人滿意的、符合要求的',
+        ipa: '/t͡suˈfʁiːdn̩ˌʃtɛlənt/',
+        example: 'Wir hoffen auf eine für beide Seiten zufriedenstellende Lösung.',
+        exampleTr: '我們期望達成一個對雙方都令人滿意的解決方案。',
+      },
+    ],
+    listening: {
+      title: '客服熱線錄音：網路中斷一週投訴與帳單減免要求',
+      dialogue: [
+        {
+          speaker: 'Kunde',
+          de: 'Guten Tag. Mein Name ist David Chen. Ich rufe wegen meines Internetanschlusses an.',
+          zh: '日安。我的名字是 David Chen。我致電是因為我的網路連線問題。',
+        },
+        {
+          speaker: 'Mitarbeiterin',
+          de: 'Guten Tag, Herr Chen. Was genau liegt denn für ein Problem vor?',
+          zh: '陳先生您好。請問具體出現了什麼問題呢？',
+        },
+        {
+          speaker: 'Kunde',
+          de: 'Unser Router hat seit vergangenem Montag kein Signal mehr. Ich arbeite im Homeoffice und die Situation ist unzumutbar.',
+          zh: '我們的路由器從上週一開始就沒有訊號了。我是在家辦公，這種情況實在難以承受。',
+        },
+        {
+          speaker: 'Mitarbeiterin',
+          de: 'Das tut mir außerordentlich leid. Ich sehe hier im System, dass es eine größere Kabelstörung in Ihrer Straße gab.',
+          zh: '這真是非常抱歉。我在系統中看到，您那條街發生了較大規模的電纜故障。',
+        },
+        {
+          speaker: 'Kunde',
+          de: 'Ich verstehe, dass Pannen passieren. Aber ich wäre Ihnen dankbar, wenn Sie mir für diesen Ausfallmonat die Grundgebühr erstatten könnten.',
+          zh: '我理解意外故障在所難免。但若您能在這個中斷月份為我減免退還基本月租費，我將不勝感激。',
+        },
+        {
+          speaker: 'Mitarbeiterin',
+          de: 'Selbstverständlich, Herr Chen. Ich buche Ihnen sofort eine Gutschrift von 40 Euro auf die nächste Monatsrechnung ein.',
+          zh: '這是理所當然的，陳先生。我立刻在您的下個月帳單中計入一筆 40 歐元的折抵退費。',
+        },
+      ],
+      questions: [
+        {
+          id: 'd194_lq1',
+          question: 'Warum ruft Herr Chen beim Kundendienst an?',
+          options: [
+            'Er möchte einen neuen Fernseher bestellen.',
+            'Sein Internetanschluss funktioniert seit einer Woche nicht mehr.',
+            'Er hat seine Rechnung verloren.',
+            'Er möchte den Vertrag kündigen.',
+          ],
+          correctIndex: 1,
+          explanation: '陳先生投訴「Unser Router hat seit vergangenem Montag kein Signal mehr」。',
+        },
+        {
+          id: 'd194_lq2',
+          question: 'Welche Lösung bietet die Mitarbeiterin dem Kunden an?',
+          options: [
+            'Er muss eine Strafe von 40 Euro zahlen.',
+            'Sie bucht eine Gutschrift von 40 Euro auf die nächste Monatsrechnung ein.',
+            'Er soll bis zum nächsten Jahr warten.',
+            'Sie legt einfach auf.',
+          ],
+          correctIndex: 1,
+          explanation: '客服人員承諾「buche Ihnen sofort eine Gutschrift von 40 Euro auf die nächste Monatsrechnung ein」。',
+        },
+      ],
+    },
+    speaking: {
+      title: '客訴投訴情境表達 (Reklamieren und Einfordern)',
+      targetSentences: [
+        {
+          de: 'Ich wäre Ihnen dankbar, wenn Sie mir den Kaufbetrag zurückerstatten könnten.',
+          zh: '若您能將購買款項退還給我，我將萬分感激。',
+          phoneticTips: 'zu-RÜCK-er-stat-ten können 結尾委婉',
+        },
+        {
+          de: 'Die gelieferte Ware entspricht leider keineswegs der Beschreibung im Internet.',
+          zh: '送達的商品遺憾的是完全不符合網路上的描述。',
+          phoneticTips: 'kei-nes-wegs 斷然否定加強語氣',
+        },
+        {
+          de: 'Könnten Sie bitte veranlassen, dass ein Techniker vorbeikommt?',
+          zh: '能否請您安排一位技術人員過來檢修？',
+          phoneticTips: 'ver-an-LAS-sen dass... 安排要求',
+        },
+        {
+          de: 'Ich hoffe auf eine rasche und unkomplizierte Lösung des Problems.',
+          zh: '我期望這個問題能夠獲得迅速而順利的解決。',
+          phoneticTips: 'un-kom-pli-ZIER-te Lö-sung 正式得體結尾',
+        },
+      ],
+      rolePlay: {
+        scenario: '歌德 B1 寫作 Teil 3 模擬：向家電商投訴故障烤箱',
+        role: '顧客',
+        prompt: '向商家客服寫一封 40 字簡短客訴 Email：說明烤箱剛買三天就無法加熱、附上訂單編號，並使用 Konjunktiv II 請求免費更換新品。',
+        modelAnswer:
+          'Sehr geehrte Damen und Herren,\nich habe vor drei Tagen den Backofen (Bestell-Nr. 98765) bei Ihnen gekauft. Leider heizt das Gerät überhaupt nicht. Ich wäre Ihnen sehr dankbar, wenn Sie mir schnellstmöglich ein funktionierendes Ersatzgerät liefern könnten. Mit freundlichen Grüßen, Max Mustermann',
+      },
+    },
+    reading: {
+      title: '正式商務投訴信範本：有瑕疵洗衣機之更換要求',
+      documentType: 'Geschäftsbrief',
+      content:
+        'MAX MUSTERMANN | HAUPTSTRASSE 12 | 10115 BERLIN\n\nAn den Kundenservice der Elektro-Express GmbH\nIndustriestraße 45\n80331 München\n\nDatum: 24. Oktober\nBetreff: Reklamation zur Bestellung Nr. EE-2024-8841 (Waschmaschine Modell AquaStar 5)\n\nSehr geehrte Damen und Herren,\n\nam 18. Oktober habe ich die oben genannte Waschmaschine über Ihren Online-Shop bestellt und gestern durch Ihre Spedition erhalten.\n\nLeider musste ich nach dem ersten Waschgang feststellen, dass die Maschine stark mangelhaft ist: Beim Schleudergang tritt an der Unterseite Wasser aus, was bereits zu einer leichten Überschwemmung im Badezimmer geführt hat.\n\nDa das Gerät noch unter voller Herstellergarantie steht, wäre ich Ihnen sehr dankbar, wenn Sie die defekte Maschine abholen und mir umgehend ein neues, fehlerfreies Ersatzmodell liefern könnten.\n\nBitte teilen Sie mir bis zum 30. Oktober mit, wann die Spedition für den Austausch vorbeikommen kann.\n\nMit freundlichen Grüßen\nMax Mustermann',
+      translation:
+        'MAX MUSTERMANN | 主街 12 號 | 10115 柏林\n\n致 電器快捷股份有限公司 客服部\n工業街 45 號\n80331 慕尼黑\n\n日期：10月24日\n主旨：關於訂單編號 EE-2024-8841 之客訴（AquaStar 5 型洗衣機）\n\n尊敬的女士們、先生們：\n\n本人於 10 月 18 日透過貴公司網店訂購上述洗衣機，並於昨日由貴公司貨運送達。\n\n遺憾的是，在第一次洗滌行程後本人不得不發現該機器存在嚴重缺陷：在脫水行程時機器底部大量漏水，已導致浴室發生輕微淹水。\n\n鑑於該設備仍在原廠完整保固期內，若貴公司能取回故障機器並立即向本人交付一台全新無瑕疵之替換產品，本人將萬分感激。\n\n請貴公司於 10 月 30 日前告知本人，貨運公司何時可前來辦理更換作業。\n\n謹致問候\nMax Mustermann',
+      glossary: {
+        'die Spedition': { pos: 'die', meaning: '貨運物流公司' },
+        'der Waschgang': { pos: 'der', meaning: '洗滌行程 (Pl. Waschgänge)' },
+        'der Schleudergang': { pos: 'der', meaning: '脫水行程' },
+        'zeitnah / umgehend': { pos: 'Adv.', meaning: '立刻地、及時地' },
+      },
+      questions: [
+        {
+          id: 'd194_rq1',
+          question: 'Welcher Mangel trat bei der neuen Waschmaschine auf?',
+          options: [
+            'Sie spielt zu laute Musik.',
+            'Beim Schleudergang tritt an der Unterseite Wasser aus.',
+            'Die Tür lässt sich nicht schließen.',
+            'Sie verbraucht keinen Strom.',
+          ],
+          correctIndex: 1,
+          explanation: '信中明確指出「Beim Schleudergang tritt an der Unterseite Wasser aus」。',
+        },
+        {
+          id: 'd194_rq2',
+          question: 'Welche Bitte richtet der Kunde im Konjunktiv II an den Händler?',
+          options: [
+            'Dass die defekte Maschine abgeholt und ein fehlerfreies Ersatzmodell geliefert wird.',
+            'Dass der Händler ins Gefängnis geht.',
+            'Dass die Waschmaschine weggeworfen wird ohne Ersatz.',
+            'Dass der Kunde das Geld verdoppelt bekommt.',
+          ],
+          correctIndex: 0,
+          explanation: '信件請求「die defekte Maschine abholen und mir umgehend ein neues, fehlerfreies Ersatzmodell liefern könnten」。',
+        },
+      ],
+    },
+    quiz: {
+      title: '正式客訴信函與 Konjunktiv II 測驗',
+      questions: [
+        {
+          id: 'd194_q1',
+          question: '在正式客訴信（Schreiben Teil 3）中，最得體、最有禮貌的請求退款句型是：',
+          options: [
+            'Gebt mir sofort mein Geld zurück, ihr Diebe!',
+            'Ich wäre Ihnen dankbar, wenn Sie mir den Betrag erstatten könnten.',
+            'Ich will mein Geld jetzt.',
+            'Geld her oder ich rufe die Polizei.',
+          ],
+          correctIndex: 1,
+          explanation: '「Ich wäre Ihnen dankbar, wenn Sie mir den Betrag erstatten könnten.」是德語正式客訴的最佳典範。',
+        },
+        {
+          id: 'd194_q2',
+          question: '歌德 B1 寫作 Teil 3（正式便條/短訊，約 40 字）的標準結尾問候語是：',
+          options: ['Liebe Grüße', 'Tschüss', 'Mit freundlichen Grüßen', 'Bis bald'],
+          correctIndex: 2,
+          explanation: '對公司、機構、房東或主管的正式公務信函，結尾必須使用「Mit freundlichen Grüßen」。',
+        },
+        {
+          id: 'd194_q3',
+          question: '「Das Gerät ist defekt. Ich bitte Sie, den Fehler bis zum 15. November zu _______」空格應填入表示「排除/修復問題」的動詞：',
+          options: ['zerstören', 'beheben', 'verlieren', 'vergessen'],
+          correctIndex: 1,
+          explanation: 'einen Fehler / ein Problem beheben（修復瑕疵、排除問題）是售後服務專業用語。',
+        },
+        {
+          id: 'd194_q4',
+          question: '正式書信稱謂「Sehr geehrte Damen und Herren,」後面第一句的首字母：',
+          options: [
+            '永遠必須小寫（除非是名詞或大寫專有名詞）',
+            '必須大寫',
+            '必須空格 5 格',
+            '必須用粗體',
+          ],
+          correctIndex: 0,
+          explanation: '稱謂以逗號結尾，下行開頭必須維持小寫（如：ich schreibe Ihnen...）。',
+        },
+      ],
+    },
+    examTip: {
+      skill: 'Schreiben',
+      title: '歌德 B1 寫作 Teil 3 拿滿分的四大格式支柱（40 字秒殺）',
+      content:
+        'B1 寫作 Teil 3 雖然只有 40 字，但格式分極其嚴格！\n1. 正式稱謂：Sehr geehrte Damen und Herren, / Sehr geehrte(r) Frau/Herr X,\n2. 原因說明：Ich schreibe Ihnen, weil...\n3. 具體請求（必用 Konjunktiv II）：Ich wäre Ihnen sehr dankbar, wenn Sie... könnten.\n4. 正式結尾：Mit freundlichen Grüßen + 你的全名。\n只要這 4 個支柱整整齊齊，40 個字一分不扣全拿滿！',
+    },
+  },
+
+  195: {
+    day: 195,
+    stage: 'B1',
+    week: 28,
+    dayOfWeek: 6,
+    title: 'Woche 28 Rückblick & B1 Konjunktiv II Test 第 28 週虛擬二式綜合複習與測驗',
+    germanTitle: 'B1-Wochenrückblick: Der Konjunktiv II in allen Lebenslagen',
+    theme: '虛擬二式全方位大閱兵：würde-Form、Hilfsverben（wäre/hätte）、Modalverben（könnte/sollte/müsste/dürfte）；五大應用情境（Bitten, Wünsche, Ratschläge, Bedingungen, Reklamation）綜合測驗',
+    estimatedMinutes: 20,
+    grammar: {
+      title: '虛擬二式全景心智圖 (Konjunktiv II im Gesamtüberblick)',
+      explanation:
+        '虛擬二式（Konjunktiv II）是從基礎德語邁向獨立流暢德語的最強大工具。本週五大核心情境快速盤點：\n1.【情態動詞變音速查表（Umlaut-Regeln）】\n  - 有 Umlaut（變音）：\n    * können -> ich könnte\n    * müssen -> ich müsste\n    * dürfen -> ich dürfte\n    * mögen -> ich möchte\n  - 無 Umlaut（無變音，極易犯錯！）：\n    * sollen -> ich sollte (絕無 söllte！)\n    * wollen -> ich wollte (絕無 wöllte！)\n2.【五大功能與經典句型配對】\n  - 1. 禮貌請求（Höfliche Bitte）：„Könnten Sie mir bitte kurz helfen?“\n  - 2. 美好願望（Irrealer Wunsch）：„Wenn ich doch bloß mehr Urlaub hätte!“\n  - 3. 換位建議（Ratschlag）：„An deiner Stelle würde ich zum Arzt gehen.“\n  - 4. 假設條件（Irreale Bedingung）：„Wenn das Wetter schön wäre, führe ich ans Meer.“\n  - 5. 得體客訴（Reklamation）：„Ich wäre Ihnen dankbar, wenn Sie den Betrag erstatteten.“\n3.【動詞變位簡明公式】\n  - würde + Infinitiv 適用於 90% 的普通實意動詞。\n  - sein, haben 及情態動詞一律直接採用自己的固有虛擬二式形式。',
+      ruleExample: [
+        { de: 'Könntest du mir bitte das Buch leihen? - Sehr gern!', zh: '能否請你把這本書借給我？ - 非常樂意！', note: '功能 1：禮貌請求' },
+        { de: 'Hätte ich doch damals besser aufgepasst!', zh: '要是我當時多加留心該多好啊！', note: '功能 2：願望與遺憾' },
+        { de: 'Du solltest dich wirklich mehr entspannen.', zh: '你真的應該多放鬆一下。', note: '功能 3：建議 (sollte 無變音)' },
+        { de: 'Wenn ich Zeit hätte, würde ich dir sofort helfen.', zh: '如果我有時間，我會立刻幫你。', note: '功能 4：非真實條件' },
+      ],
+    },
+    vocabulary: [
+      {
+        id: 'd195_v1',
+        word: 'die Höflichkeitsform',
+        article: 'die',
+        plural: 'die Höflichkeitsformen',
+        meaning: '敬語形式、禮貌體',
+        ipa: '/ˈhøːflɪçkaɪ̯tsfɔʁm/',
+        example: 'Die Höflichkeitsform drückt Respekt im Umgang mit Fremden aus.',
+        exampleTr: '敬語形式體現了與陌生人打交道時的尊重。',
+      },
+      {
+        id: 'd195_v2',
+        word: 'die Möglichkeitsform',
+        article: 'die',
+        plural: 'die Möglichkeitsformen',
+        meaning: '可能態、虛擬式（德語文法中 Konjunktiv 的通俗說法）',
+        ipa: '/ˈmøːklɪçkaɪ̯tsfɔʁm/',
+        example: 'Der Konjunktiv II wird oft auch als Möglichkeitsform bezeichnet.',
+        exampleTr: '虛擬二式常被稱為可能式。',
+      },
+      {
+        id: 'd195_v3',
+        word: 'das Gedankenexperiment',
+        article: 'das',
+        plural: 'die Gedankenexperimente',
+        meaning: '思想實驗、假想推演',
+        ipa: '/ɡəˈdaŋkn̩ʔɛkspeʁiˌmɛnt/',
+        example: 'Einstein nutzte berühmte Gedankenexperimente für seine Relativitätstheorie.',
+        exampleTr: '愛因斯坦運用著名的思想實驗推演其相對論。',
+      },
+      {
+        id: 'd195_v4',
+        word: 'differenziert',
+        meaning: '細緻深入的、有層次的、客觀周全的',
+        ipa: '/dɪfəʁɛnˈt͡siːɐ̯t/',
+        example: 'Auf dem Niveau B1 formuliert man differenzierte Meinungen.',
+        exampleTr: '在 B1 水平，人們表達細緻周全的觀點。',
+      },
+      {
+        id: 'd195_v5',
+        word: 'anwenden',
+        meaning: '應用、運用（動詞三態：wendet an, wandte an, hat angewandt / angewendet）',
+        ipa: '/ˈanˌvɛndn̩/',
+        example: 'Sie können diese Grammatikregeln im täglichen Gespräch anwenden.',
+        exampleTr: '您可以將這些文法規則運用在日常交談中。',
+      },
+      {
+        id: 'd195_v6',
+        word: 'beherrschen',
+        meaning: '掌握、精通（動詞三態：beherrscht, beherrschte, hat beherrscht）',
+        ipa: '/bəˈhɛʁʃn̩/',
+        example: 'Wer den Konjunktiv II beherrscht, klingt sofort viel gebildeter.',
+        exampleTr: '掌握了虛擬二式的人，聽起來立刻具有更高的文化修養。',
+      },
+      {
+        id: 'd195_v7',
+        word: 'flexibel',
+        meaning: '靈活的、彈性的',
+        ipa: '/flɛkˈsiːbl̩/',
+        example: 'Seien Sie flexibel bei der Wahl Ihrer sprachlichen Mittel.',
+        exampleTr: '在選擇語言表達手段時請保持靈活。',
+      },
+    ],
+    listening: {
+      title: '一對一外師對練：虛擬二式極速口頭反應訓練',
+      dialogue: [
+        {
+          speaker: 'Trainerin',
+          de: 'So, Jan! Jetzt machen wir das Blitz-Training für den Konjunktiv II. Ich nenne einen direkten Satz, du machst eine höfliche Bitte daraus!',
+          zh: '好，Jan！現在我們來做虛擬二式的閃電快問快答。我說一個直接直陳句，你把它改成禮貌請求！',
+        },
+        {
+          speaker: 'Jan',
+          de: 'Alles klar, ich bin bereit!',
+          zh: '沒問題，我準備好了！',
+        },
+        {
+          speaker: 'Trainerin',
+          de: 'Satz 1: „Gib mir das Salz!“',
+          zh: '第 1 句：「把鹽給我！」',
+        },
+        {
+          speaker: 'Jan',
+          de: 'Würdest du mir bitte das Salz reichen? Oder: Könntest du mir bitte das Salz geben?',
+          zh: '能否請你把鹽遞給我？或者：能否請你把鹽拿給我？',
+        },
+        {
+          speaker: 'Trainerin',
+          de: 'Ausgezeichnet! Satz 2: Ein Ratschlag für einen Freund mit Kopfschmerzen: „Nimm eine Tablette!“',
+          zh: '太棒了！第 2 句：給頭痛朋友的建議：「吃顆藥片！」',
+        },
+        {
+          speaker: 'Jan',
+          de: 'An deiner Stelle würde ich eine Schmerztablette nehmen und mich hinlegen.',
+          zh: '如果我是你，我會吃顆止痛藥然後躺下休息。',
+        },
+        {
+          speaker: 'Trainerin',
+          de: 'Perfekt formuliert! Du beherrschst die Formen im Schlaf!',
+          zh: '表達得無懈可擊！你對這些形式已經瞭若指掌了！',
+        },
+      ],
+      questions: [
+        {
+          id: 'd195_lq1',
+          question: 'Wie verwandelt Jan den Befehl „Gib mir das Salz“?',
+          options: [
+            'Er schreit lauter.',
+            'Er verwendet „Würdest du... reichen?“ bzw. „Könntest du... geben?“.',
+            'Er sagt „Ich will kein Salz“.',
+            'Er übersetzt den Satz ins Englische.',
+          ],
+          correctIndex: 1,
+          explanation: 'Jan 流暢運用了虛擬二式禮貌句型「Würdest du... reichen? / Könntest du... geben?」。',
+        },
+        {
+          id: 'd195_lq2',
+          question: 'Welchen Ratschlag formuliert Jan mit „An deiner Stelle...“?',
+          options: [
+            'Dass der Freund sofort 10 Kilometer rennen soll.',
+            'Dass er eine Schmerztablette nehmen und sich hinlegen würde.',
+            'Dass er mehr Kaffee trinken soll.',
+            'Dass er zur Arbeit gehen muss.',
+          ],
+          correctIndex: 1,
+          explanation: 'Jan 給出的建議是「An deiner Stelle würde ich eine Schmerztablette nehmen und mich hinlegen」。',
+        },
+      ],
+    },
+    speaking: {
+      title: '虛擬二式情境快速切換演練 (Flexibler Konjunktiv-Einsatz)',
+      targetSentences: [
+        {
+          de: 'Könnten Sie mir bitte die Tür aufhalten? Ich habe keine Hand frei.',
+          zh: '能否請您幫我按住門？我雙手都沒空。',
+          phoneticTips: 'KÖNN-ten Sie bit-te 禮貌自然',
+        },
+        {
+          de: 'Wenn ich doch nur einmal den Mount Everest besteigen könnte!',
+          zh: '要是我能登一次聖母峰該多好啊！',
+          phoneticTips: 'Wenn... KÖNN-te! 強烈願望',
+        },
+        {
+          de: 'An Ihrer Stelle würde ich die Versicherung sofort kündigen.',
+          zh: '如果是您這種情況，我會立刻退保這份保險。',
+          phoneticTips: 'An Ih-rer STEL-le wür-de ich 堅決建議',
+        },
+        {
+          de: 'Ich wäre Ihnen für eine rasche Antwort sehr dankbar.',
+          zh: '若您能迅速回信，我將萬分感激。',
+          phoneticTips: 'wä-re Ih-nen dank-bar 正式信件經典收尾',
+        },
+      ],
+      rolePlay: {
+        scenario: 'B1 綜合口試模擬：考官即興測試五大功能',
+        role: '考生',
+        prompt: '考官向你提出難題：「Sie haben ein defektes Handy im Laden gekauft. Was sagen Sie dem Verkäufer?」請用虛擬二式做出兼具禮貌與堅決訴求的表達。',
+        modelAnswer:
+          'Guten Tag! Ich habe dieses Smartphone gestern bei Ihnen gekauft. Leider musste ich feststellen, dass der Akku defekt ist. Da ich noch volle Garantie habe, wäre ich Ihnen sehr dankbar, wenn Sie mir das Gerät umtauschen oder den Kaufpreis erstatten könnten.',
+      },
+    },
+    reading: {
+      title: '語法心智圖：德語虛擬二式五大核心應用全景',
+      documentType: 'Grammatik-Übersicht',
+      content:
+        'SPRACHINSTITUT GOETHE - MATRIX KONJUNKTIV II\n\n1. Die Formen im Überblick:\n- Hilfsverben: sein -> wäre | haben -> hätte | werden -> würde\n- Modalverben: können -> könnte | müssen -> müsste | dürfen -> dürfte | sollen -> sollte (!) | wollen -> wollte (!)\n- Vollverben: Fast immer Ersatzform mit „würde + Infinitiv“ („Ich würde gerne reisen“ statt altertümlichem „Ich reiste gerne“).\n\n2. Die 5 Hauptanwendungen:\nI. Höfliche Bitte: „Könnten Sie mir bitte den Weg beschreiben?“\nII. Irrealer Wunsch: „Wenn doch endlich Sommer wäre!“ / „Wäre doch endlich Sommer!“\nIII. Ratschlag: „Du solltest mehr Wasser trinken.“ / „An deiner Stelle würde ich...“\nIV. Irreale Bedingung: „Wenn ich Urlaub hätte, würde ich nach Wien fahren.“\nV. Formelle Reklamation: „Ich wäre Ihnen dankbar, wenn Sie mir die Kosten erstatteten.“\n\nPrüfungsrelevanz: In allen 4 Modulen (Hören, Lesen, Schreiben, Sprechen) unverzichtbar für B1!',
+      translation:
+        '歌德語言學院 - 虛擬二式全景矩陣\n\n1. 形式總覽：\n- 助動詞：sein -> wäre | haben -> hätte | werden -> würde\n- 情態動詞：können -> könnte | müssen -> müsste | dürfen -> dürfte | sollen -> sollte（無變音！）| wollen -> wollte（無變音！）\n- 實意動詞：幾乎一律採用「würde + 原形」替代形式（例如使用「Ich würde gerne reisen」，取代古雅拗口的「Ich reiste gerne」）。\n\n2. 五大主要應用：\nI. 禮貌請求：„Könnten Sie mir bitte den Weg beschreiben?“\nII. 非真實願望：„Wenn doch endlich Sommer wäre!“ / „Wäre doch endlich Sommer!“\nIII. 給予建議：„Du solltest mehr Wasser trinken.“ / „An deiner Stelle würde ich...“\nIV. 非真實條件：„Wenn ich Urlaub hätte, würde ich nach Wien fahren.“\nV. 正式客訴：„Ich wäre Ihnen dankbar, wenn Sie mir die Kosten erstatteten.“\n\n檢定重要性：在聽、讀、寫、說四大模組中，虛擬二式皆為 B1 必備核心！',
+      glossary: {
+        'die Matrix': { pos: 'die', meaning: '矩陣、對照圖表' },
+        'altertümlich': { pos: 'Adj.', meaning: '古舊的、過時古雅的' },
+        'die Prüfungsrelevanz': { pos: 'die', meaning: '與考試評分之切身關聯性' },
+      },
+      questions: [
+        {
+          id: 'd195_rq1',
+          question: 'Welche beiden Modalverben bilden den Konjunktiv II OHNE Umlaut?',
+          options: ['können und müssen', 'dürfen und mögen', 'sollen und wollen', 'sein und haben'],
+          correctIndex: 2,
+          explanation: '清單清楚標記「sollen -> sollte (!) | wollen -> wollte (!)」，兩者絕無變音。',
+        },
+        {
+          id: 'd195_rq2',
+          question: 'Warum verwendet man im modernen Deutsch bei Vollverben meist „würde + Infinitiv“?',
+          options: [
+            'Weil die echten Formen (z.B. „ich reiste“) oft altertümlich klingen oder mit dem Präteritum identisch sind.',
+            'Weil Vollverben verboten sind.',
+            'Weil es keine anderen Formen gibt.',
+            'Weil das Wörterbuch sonst zu schwer wird.',
+          ],
+          correctIndex: 0,
+          explanation: '現代德語中，實意動詞的固有虛擬二式形式常與過去式混淆且聽起來古舊拗口，因此普遍採用 würde + 原形。',
+        },
+      ],
+    },
+    quiz: {
+      title: '第 28 週虛擬二式綜合大檢驗',
+      questions: [
+        {
+          id: 'd195_q1',
+          question: '下列情態動詞虛擬二式變化中，哪一個是錯誤的？',
+          options: ['er könnte', 'er müsste', 'er söllte', 'er dürfte'],
+          correctIndex: 2,
+          explanation: '「er söllte」是嚴重的拼寫錯誤！sollen 的虛擬二式沒有 Umlaut，永遠是 er sollte。',
+        },
+        {
+          id: 'd195_q2',
+          question: '「Wenn ich doch nur mehr Zeit _______!」空格應填入：',
+          options: ['habe', 'hätte', 'hatte', 'hätten'],
+          correctIndex: 1,
+          explanation: '主詞是 ich，haben 的虛擬二式是 hätte（Wenn ich doch nur mehr Zeit hätte!）。',
+        },
+        {
+          id: 'd195_q3',
+          question: '在正式投訴信中表達「若您能盡快回覆，我將萬分感激」，正確動詞是：',
+          options: [
+            'Ich wäre Ihnen dankbar, wenn Sie bald antworten könnten.',
+            'Ich bin Ihnen dankbar, wenn Sie antworten.',
+            'Ich war Ihnen dankbar.',
+            'Ich werde dankbar sein.',
+          ],
+          correctIndex: 0,
+          explanation: '「Ich wäre Ihnen dankbar, wenn Sie bald antworten könnten.」是最高分格式。',
+        },
+        {
+          id: 'd195_q4',
+          question: '「Wäre das Wetter heute schön, _______ wir eine Radtour machen.」空格應填入：',
+          options: ['würden', 'haben', 'werden', 'sind'],
+          correctIndex: 0,
+          explanation: '主句主詞是 wir，動作搭配 würden + Infinitiv 構成虛擬二式（würden wir... machen）。',
+        },
+      ],
+    },
+    examTip: {
+      skill: 'Schreiben',
+      title: '德語 B1 語法王冠：掌握 Konjunktiv II 就拿下了半壁江山',
+      content:
+        '回顧這整週的學習：從禮貌請求（könnten/würden）、願望（wenn doch bloß）、同理建議（sollte / an deiner Stelle）、非真實條件（wenn... dann...）到正式客訴信（wäre dankbar），背後全由 Konjunktiv II 貫穿！掌握了這套體系，你的德語徹底擺脫了「外國人講話生硬」的刻板印象，真正具備了德國受過高等教育者的優雅談吐！',
+    },
+  },
+
+  196: {
+    day: 196,
+    stage: 'B1',
+    week: 28,
+    dayOfWeek: 7,
+    title: 'Kultur: Die Kunst des deutschen Feierabends 德國下班神聖文化與生活平衡',
+    germanTitle: 'Kultur & Lebensart: Der deutsche Feierabend und die Trennung von Beruf und Privatleben',
+    theme: '德國文化瑰寶：Feierabend（神聖下班時光）、Work-Life-Balance（工作與生活平衡）、界線劃分（Grenzziehung: 下班絕不看公務訊息）與俱樂部社團生活（Vereinsleben）',
+    estimatedMinutes: 20,
+    grammar: {
+      title: '閒暇放鬆與界線設定表達句型 (Sprache für Freizeitgestaltung & Grenzen)',
+      explanation:
+        '在德國，「Feierabend」是一個具有幾乎神聖地位的文化詞彙。它不單指「下班的那一刻」，而是指「工作結束後、全然屬於個人與家庭的放鬆神聖時光」。\n1.【Feierabend 相關地道片語與時態表達】\n  - Feierabend machen (收工、下班打卡)：\n    * „Um 17 Uhr mache ich heute Feierabend.“ (我今天下午 5 點收工)\n  - Schönen Feierabend! (祝你下班愉快！德國職場最常聽到的道別語)\n  - den Feierabend genießen (享受下班休閒時光)\n2.【工作與私生活界線劃分句型（Trennung von Beruf und Privatleben）】\n  - Nach Feierabend [Verb] [Subjekt]...\n    * „Nach Feierabend [schalte] ich mein Diensthandy konsequent aus.“ (下班後我堅決關掉公務手機)\n  - klare Grenzen ziehen (劃清明確界線)：\n    * „Man muss lernen, eine klare Grenze zwischen Job und Freizeit zu ziehen.“\n  - abschalten (放鬆心情、斷開工作思緒)：\n    * „Beim Joggen im Wald kann ich wunderbar vom Alltagsstress abschalten.“\n3.【德國強大的社團文化（Vereinskultur）】\n  - Über 600.000 Vereine in Deutschland: Sportvereine, Musikvereine, Kleingartenvereine.\n  - „Im Verein engagieren sich Menschen ehrenamtlich und finden neue Freunde.“',
+      ruleExample: [
+        { de: 'So, für heute reicht es: Ich mache jetzt Feierabend!', zh: '好了，今天就到此為止：我現在要下班收工了！', note: 'Feierabend machen (收工下班)' },
+        { de: 'Ich wünsche Ihnen allen einen wunderschönen und erholsamen Feierabend!', zh: '祝各位下班時光美好愜意、好好放鬆！', note: '職場每日標準祝福語' },
+        { de: 'Nach 18 Uhr beantworte ich grundsätzlich keine geschäftlichen E-Mails mehr.', zh: '晚上 6 點過後，我原則上不再回覆任何公務電子郵件。', note: '界線設定：grundsätzlich' },
+        { de: 'Am Feierabend treffe ich mich regelmäßig mit Freunden im Sportverein.', zh: '下班後我常常與朋友在體育俱樂部聚會。', note: 'Vereinsleben (社團生活)' },
+      ],
+    },
+    vocabulary: [
+      {
+        id: 'd196_v1',
+        word: 'der Feierabend',
+        article: 'der',
+        plural: 'die Feierabende',
+        meaning: '下班時間、收工後的休閒時光',
+        ipa: '/ˈfaɪ̯ɐˌʔaːbn̩t/',
+        example: 'Endlich Feierabend! Jetzt wird erst einmal entspannt.',
+        exampleTr: '終於下班了！現在先好好放鬆一下。',
+      },
+      {
+        id: 'd196_v2',
+        word: 'die Erholung',
+        article: 'die',
+        plural: 'die Erholungen',
+        meaning: '休養、放鬆、恢復體力',
+        ipa: '/ɛɐ̯ˈhoːlʊŋ/',
+        example: 'Nach einer anstrengenden Arbeitswoche braucht der Körper Erholung.',
+        exampleTr: '歷經辛勞的工作週之後，身體需要休養放鬆。',
+      },
+      {
+        id: 'd196_v3',
+        word: 'die Grenzziehung',
+        article: 'die',
+        plural: 'die Grenzziehungen',
+        meaning: '劃界、界線劃定',
+        ipa: '/ˈɡʁɛnt͡sˌt͡siːʊŋ/',
+        example: 'Eine gesunde Grenzziehung schützt vor dem gefürchteten Burnout.',
+        exampleTr: '健全的界線劃分能防範令人恐懼的職業倦怠。',
+      },
+      {
+        id: 'd196_v4',
+        word: 'abschalten',
+        meaning: '關掉；放鬆心情、斷開思緒（動詞三態：schaltet ab, schaltete ab, hat abgeschaltet）',
+        ipa: '/ˈapˌʃaltn̩/',
+        example: 'Bei klassischer Musik kann ich am besten abschalten.',
+        exampleTr: '聽古典音樂時我最能放空思緒、徹底放鬆。',
+      },
+      {
+        id: 'd196_v5',
+        word: 'genießen',
+        meaning: '享受、享用（動詞三態：genießt, genoss, hat genossen）',
+        ipa: '/ɡəˈniːsn̩/',
+        example: 'Wir genossen den warmen Sommerabend auf dem Balkon.',
+        exampleTr: '我們在陽台上享受著溫暖的夏日傍晚。',
+      },
+      {
+        id: 'd196_v6',
+        word: 'heilig',
+        meaning: '神聖的、不容侵犯的',
+        ipa: '/ˈhaɪ̯lɪç/',
+        example: 'Den Deutschen ist ihr Feierabend und ihr Sonntag heilig.',
+        exampleTr: '對德國人而言，下班時光與週日是神聖不可侵犯的。',
+      },
+      {
+        id: 'd196_v7',
+        word: 'ungestört',
+        meaning: '不受打擾的、寧靜的',
+        ipa: '/ˈʊnɡəˌʃtøːɐ̯t/',
+        example: 'Ich möchte das Wochenende ungestört mit meiner Familie verbringen.',
+        exampleTr: '我想不受打擾地與家人共度週末。',
+      },
+    ],
+    listening: {
+      title: '廣播人物專訪：德國上班族的下班儀式與社團生活',
+      dialogue: [
+        {
+          speaker: 'Moderatorin',
+          de: 'Herr Krüger, Sie arbeiten als IT-Berater in Frankfurt. Was bedeutet der Begriff „Feierabend“ für Sie persönlich?',
+          zh: 'Krüger 先生，您在法蘭克福擔任 IT 顧問。對您個人而言，「Feierabend」這個概念意味著什麼？',
+        },
+        {
+          speaker: 'Herr Krüger',
+          de: 'Für mich ist der Feierabend ein klares Ritual: Um Punkt 17:30 Uhr klappe ich den Laptop zu und ziehe meine Laufkleidung an.',
+          zh: '對我來說，下班是一項明確的儀式：下午 5 點半整，我闔上筆電並換上跑步運動服。',
+        },
+        {
+          speaker: 'Moderatorin',
+          de: 'Und was ist mit Dienst-Mails oder Anrufen auf dem Smartphone?',
+          zh: '那智慧型手機上的公務郵件或電話呢？',
+        },
+        {
+          speaker: 'Herr Krüger',
+          de: 'Die werden rigoros ignoriert. Meine Kollegen und Vorgesetzten wissen: Nach Feierabend bin ich offline.',
+          zh: '那些一律被嚴格忽視。我的同事與主管都清楚：下班之後我就離線了。',
+        },
+        {
+          speaker: 'Moderatorin',
+          de: 'Und wohin zieht es Sie heute Abend noch?',
+          zh: '那您今晚還打算去哪裡呢？',
+        },
+        {
+          speaker: 'Herr Krüger',
+          de: 'Ich fahre direkt zu meinem Fußballverein. Dort trainieren wir zwei Stunden. Dieser Ausgleich hält mich geistig fit!',
+          zh: '我直接開車去我的足球俱樂部。我們在那裡訓練兩個小時。這種平衡讓我保持充沛的心理活力！',
+        },
+      ],
+      questions: [
+        {
+          id: 'd196_lq1',
+          question: 'Welches Ritual hat Herr Krüger um 17:30 Uhr?',
+          options: [
+            'Er beginnt erst mit der Arbeit.',
+            'Er klappt den Laptop zu und zieht Laufkleidung an.',
+            'Er ruft alle Kunden noch einmal an.',
+            'Er schläft im Büro ein.',
+          ],
+          correctIndex: 1,
+          explanation: 'Krüger 先生提到「Um Punkt 17:30 Uhr klappe ich den Laptop zu und ziehe meine Laufkleidung an」。',
+        },
+        {
+          id: 'd196_lq2',
+          question: 'Was macht Herr Krüger nach dem Laufen?',
+          options: [
+            'Er fährt zu seinem Fußballverein zum Training.',
+            'Er schreibt die ganze Nacht Programmiercode.',
+            'Er schaut bis 4 Uhr morgens fern.',
+            'Er geht in den Supermarkt arbeiten.',
+          ],
+          correctIndex: 0,
+          explanation: '他回答「Ich fahre direkt zu meinem Fußballverein. Dort trainieren wir zwei Stunden」。',
+        },
+      ],
+    },
+    speaking: {
+      title: '生活休閒與跨文化下班習慣表達 (Feierabendkultur vergleichen)',
+      targetSentences: [
+        {
+          de: 'In Deutschland wird die Grenze zwischen Arbeit und Freizeit strikt respektiert.',
+          zh: '在德國，工作與閒暇之間的界線受到嚴格尊重。',
+          phoneticTips: 'strikt re-spek-TIERT 沉穩肯定',
+        },
+        {
+          de: 'Nach einem langen Bürotag kann ich beim Kochen wunderbar abschalten.',
+          zh: '在漫長的辦公室工作日後，我下廚時最能放鬆心情。',
+          phoneticTips: 'AB-schal-ten 分離前綴重讀',
+        },
+        {
+          de: 'Ich wünsche allen Kolleginnen und Kollegen einen wohlverdienten Feierabend!',
+          zh: '祝所有男女同事們享受當之無愧的下班愉快時光！',
+          phoneticTips: 'wohl-ver-DIEN-ten 暖心真誠祝福',
+        },
+        {
+          de: 'In meiner Heimat gibt es keine so strikte Trennung, oft geht man mit dem Chef essen.',
+          zh: '在我的家鄉沒有這麼嚴格的劃分，大家常常跟主管一起聚餐。',
+          phoneticTips: 'strik-te Tren-nung 跨文化對比',
+        },
+      ],
+      rolePlay: {
+        scenario: '歌德 B1 口說 Teil 2：主題簡報「我的家鄉與德國的下班休閒文化對比」',
+        role: '簡報人',
+        prompt: '向考官介紹兩國的下班生活方式：德國人如何過 Feierabend、你母國的情形為何，以及你的個人偏好。',
+        modelAnswer:
+          'Guten Tag! Mein heutiges Thema ist „Die Kultur des Feierabends“. In Deutschland habe ich gelernt, dass der Feierabend als heilig gilt: Pünktlich nach Dienstschluss widmet man sich Hobbys, Familie oder dem Vereinsleben. In Taiwan dagegen sind Überstunden und abendliche Geschäftsessen viel verbreiteter. Persönlich gefällt mir das deutsche Modell sehr gut, weil man so neue Energie tanken kann.',
+      },
+    },
+    reading: {
+      title: '文化深度漫談：德語世界不可替代的「Feierabend」瑰寶',
+      documentType: 'Kulturell-soziologischer Essay',
+      content:
+        'DER FEIERABEND - EIN DEUTSCHES KULTURGUT VON WELTRANG\n\nDas Wort „Feierabend“ lässt sich in fast keine andere Sprache eins zu eins übersetzen. Es setzt sich historisch aus dem althochdeutschen „Abend vor einem Feiertag“ zusammen – dem Zeitpunkt, an dem die bäuerliche Arbeit ruhte und die festliche Vorbereitung begann.\n\nIn der industriellen Moderne entwickelte sich der Feierabend zum Symbol für den hart erkämpften 8-Stunden-Tag. Während in vielen asiatischen oder angelsächsischen Kulturen die ständige Erreichbarkeit als Zeichen von Fleiß interpretiert wird, gilt ein Arbeitnehmer in Deutschland, der um 21 Uhr noch berufliche E-Mails verschickt, eher als schlecht organisiert.\n\nDer Feierabend markiert einen psychologischen Schutzraum. Hier schlüpft der Mensch aus seiner Berufsrolle und wird wieder ganz Privatperson: sei es im Schrebergarten, beim Chor im Gesangsverein, beim Sport oder schlicht beim gemütlichen „Feierabendbier“ mit Freunden.\n\nSoziologen sehen in dieser klaren Grenzziehung einen Hauptgrund dafür, warum die deutsche Wirtschaft trotz vergleichsweise geringer Jahresarbeitsstunden eine der höchsten Produktivitätsraten weltweit aufweist.',
+      translation:
+        '下班時光（FEIERABEND） - 享譽世界的德國文化瑰寶\n\n「Feierabend」這個單字在幾乎任何其他語言中都無法一對一完美翻譯。在歷史上，它源自古高地德語的「節日前夕」——即農務歇息、節慶準備開始的時刻。\n\n在工業現代化進程中，Feierabend 演變為歷經艱辛爭取而來的「八小時工作制」象徵。在許多亞洲或盎格魯-撒克遜文化中，隨時待命被解讀為勤奮的標誌；然而在德國，一位在晚上 9 點還在發送公務電子郵件的員工，反而更容易被視為時間管理不善、缺乏組織力。\n\nFeierabend 標誌著一個心理防護空間。在此，人們褪去職場角色的束縛，重新成為純粹的私人個體：無論是在租賃小花園裡蒔花弄草、在合唱團練唱、參與體育運動，抑或只是單純與好友喝杯愜意的「下班啤酒」。\n\n社會學家認為，這種清晰的界線劃定，正是德國經濟在年工作時數相對較低的情況下，卻能名列全球生產力最高國家之一的核心主因。',
+      glossary: {
+        'das Kulturgut': { pos: 'das', meaning: '文化瑰寶、文化遺產' },
+        'die Erreichbarkeit': { pos: 'die', meaning: '可聯繫性、隨時待命狀態' },
+        'der Schrebergarten': { pos: 'der', meaning: '市民租賃小菜園/小花園' },
+        'die Produktivitätsrate': { pos: 'die', meaning: '生產力比率、工作效率' },
+      },
+      questions: [
+        {
+          id: 'd196_rq1',
+          question: 'Wie wird ein Arbeitnehmer in Deutschland oft wahrgenommen, wenn er um 21 Uhr noch Dienst-Mails schreibt?',
+          options: [
+            'Als der beste Mitarbeiter des Jahres.',
+            'Eher als schlecht organisiert, statt als besonders fleißig.',
+            'Er wird sofort befördert.',
+            'Niemand bemerkt es.',
+          ],
+          correctIndex: 1,
+          explanation: '文章第三段指出「gilt ein Arbeitnehmer in Deutschland... eher als schlecht organisiert」。',
+        },
+        {
+          id: 'd196_rq2',
+          question: 'Welchen Zusammenhang sehen Soziologen zwischen Feierabend und Produktivität?',
+          options: [
+            'Dass deutsche Mitarbeiter überhaupt nichts arbeiten.',
+            'Dass die klare Grenzziehung und Erholung zu einer der höchsten Produktivitätsraten weltweit führt.',
+            'Dass Feierabend verboten werden sollte.',
+            'Dass man am Feierabend eine zweite Arbeit annehmen muss.',
+          ],
+          correctIndex: 1,
+          explanation: '末段總結「klarer Grenzziehung einen Hauptgrund dafür... eine der höchsten Produktivitätsraten weltweit aufweist」。',
+        },
+      ],
+    },
+    quiz: {
+      title: '德國 Feierabend 文化與休閒用語測驗',
+      questions: [
+        {
+          id: 'd196_q1',
+          question: '當德國同事在下午下班走出辦公室時，最標準的告別問候語是：',
+          options: ['Schönen Feierabend!', 'Gute Reise!', 'Frohe Weihnachten!', 'Herzliches Beileid!'],
+          correctIndex: 0,
+          explanation: '「Schönen Feierabend!」（祝下班愉快！）是德國職場每天必說的神聖道別語。',
+        },
+        {
+          id: 'd196_q2',
+          question: '「Feierabend machen」這個片語的意思是：',
+          options: [
+            '舉辦盛大的生日派對',
+            '結束一天的工作收工下班',
+            '在半夜加班',
+            '被公司開除',
+          ],
+          correctIndex: 1,
+          explanation: 'Feierabend machen 意為結束當天工作、收工下班（打烊打卡）。',
+        },
+        {
+          id: 'd196_q3',
+          question: '在德語中，「vom Alltagsstress abschalten」的意思是：',
+          options: [
+            '把電腦電源拔掉',
+            '從日常生活壓力中放鬆身心、斷開工作思緒',
+            '增加更多工作項目',
+            '去醫院看急診',
+          ],
+          correctIndex: 1,
+          explanation: 'abschalten 常用於比喻「切斷思緒開關、徹底放鬆心情」。',
+        },
+        {
+          id: 'd196_q4',
+          question: '德國社會中龐大的「Vereinsleben」（社團俱樂部生活）通常涵蓋哪些領域？',
+          options: [
+            '只有政治特務機構',
+            '體育運動、音樂合唱、自然保護、小花園等多元社區民間組織',
+            '強迫勞動營',
+            '僅限億萬富翁的私人俱樂部',
+          ],
+          correctIndex: 1,
+          explanation: '德國民間有超過 60 萬個各類註冊協會（e.V.），是德國人下班交友與志願奉獻的核心生活圈。',
+        },
+      ],
+    },
+    examTip: {
+      skill: 'Sprechen',
+      title: 'B1 口說 Teil 2 主題發揮：巧妙引入「Feierabend」展現深厚跨文化理解',
+      content:
+        '在歌德 B1 口說第二部分簡報個人休閒愛好（Hobbys & Freizeit）時，如果只說「In meiner Freizeit spiele ich Fußball」，會顯得平淡無奇。如果你加上：「Nach der Arbeit ist mir der deutsche Feierabend sehr wichtig, um abzuschalten. Ich engagiere mich zweimal pro Woche in einem lokalen Sportverein...」，考官會深深感受到你對德國生活哲學的深入體會，文化素養直接給予最高評分！',
+    },
+  },
+};

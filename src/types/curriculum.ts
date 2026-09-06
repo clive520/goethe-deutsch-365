@@ -26,10 +26,12 @@ export interface DialogueLine {
   de: string;
   zh: string;
   audioStartSec?: number;
+  text?: string;
+  translation?: string;
 }
 
 export interface QuizQuestion {
-  id: string;
+  id?: string;
   question: string;
   type?: 'single' | 'true_false' | 'dictation';
   options: string[];
@@ -39,43 +41,53 @@ export interface QuizQuestion {
 
 export interface ListeningExercise {
   title: string;
-  situation: string;
+  situation?: string;
+  audioUrl?: string;
   dialogue: DialogueLine[];
-  questions: QuizQuestion[];
+  questions?: QuizQuestion[];
+  comprehensionQuestions?: QuizQuestion[];
 }
 
 export interface SpeakingExercise {
   title: string;
-  instruction: string;
+  instruction?: string;
   targetSentences: {
-    id: string;
+    id?: string;
     de: string;
     zh: string;
     phoneticTip?: string;
+    phoneticTips?: string;
     keywords?: string[];
   }[];
   rolePlay?: {
-    partnerName: string;
-    partnerRole: string;
-    scenario: string;
-    promptDe: string;
-    promptZh: string;
-    sampleReplies: string[];
+    partnerName?: string;
+    partnerRole?: string;
+    scenario?: string;
+    promptDe?: string;
+    promptZh?: string;
+    sampleReplies?: string[];
+    role?: string;
+    prompt?: string;
+    modelAnswer?: string;
+    examinerRole?: string;
+    studentRole?: string;
+    modelAnswerDe?: string;
   };
 }
 
 export interface ReadingExercise {
   title: string;
-  documentType: 'E-Mail' | 'Aushang' | 'Anzeige' | 'Nachricht' | 'Artikel' | 'Kurznachricht';
+  documentType: string;
   sourceInfo?: string;
   content: string; // Plain text or tagged
-  translation: string;
+  translation?: string;
+  zh?: string;
   glossary: Record<string, { pos: string; meaning: string; gender?: string }>;
   questions: QuizQuestion[];
 }
 
 export interface ExamTip {
-  skill: 'Hören' | 'Lesen' | 'Schreiben' | 'Sprechen';
+  skill: 'Hören' | 'Lesen' | 'Schreiben' | 'Sprechen' | string;
   title: string;
   content: string;
 }
@@ -95,6 +107,10 @@ export interface DayLesson {
   speaking: SpeakingExercise;
   reading: ReadingExercise;
   examTip?: ExamTip;
+  quiz?: {
+    title: string;
+    questions: QuizQuestion[];
+  };
 }
 
 export interface SavedWordCard {
