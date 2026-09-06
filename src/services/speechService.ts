@@ -187,7 +187,90 @@ export class SpeechService {
     return { score, matchedWords, missedWords };
   }
 
-  private static levenshtein(a: string, b: string): number {
+  /**
+   * Calculate detailed pronunciation diagnosis with word-by-word correctness and explicit evaluation
+   */
+  static calculateDetailedScore(target: string, spoken: string): SpeechEvaluationResult {
+    const clean = (str: string) =>
+      str
+        .toLowerCase()
+        .replace(/[.,!?;:"'()„“]/g, '')
+        .trim();
+
+    const targetWordsClean = clean(target).split(/\s+/).filter(Boolean);
+    const spokenWordsClean = clean(spoken).split(/\s+/).filter(Boolean);
+
+    // Target tokens with original punctuation for display
+    const rawTokens = target.split(/\s+/).filter(Boolean);
+
+    const matchedWords: string[] = [];
+    const missedWords: string[] = [];
+
+    const wordDetails: WordEvaluation[] = rawTokens.map((raw) => {
+      const cleanWord = clean(raw);
+      if (!cleanWord) return { raw, clean: cleanWord, isCorrect: true };
+
+      const isMatch = spokenWordsClean.some((spk) => {
+        if (spk === cleanWord) return true;
+        return this.levenshtein(spk, cleanWord) <= 1 && cleanWord.length >= 4;
+      });
+
+      if (isMatch) {
+        matchedWords.push(cleanWord);
+      } else {
+        missedWords.push(cleanWord);
+      }
+
+      return {
+        raw,
+        clean: cleanWord,
+        isCorrect: isMatch,
+      };
+    });
+
+    const totalCleanWords = targetWordsClean.length || 1;
+    const score = Math.min(100, Math.round((matchedWords.length / totalCleanWords) * 100));
+
+    let verdict: SpeechEvaluationResult['verdict'];
+    let verdictTitle: string;
+    let verdictMessage: string;
+    let isCorrect: boolean;
+
+    if (score >= 85) {
+      verdict = 'EXCELLENT';
+      isCorrect = true;
+      verdictTitle = '🌟 念得非常優秀！發音正確地道 (Ausgezeichnet)';
+      verdictMessage = '太棒了！您的發音、重音與語調完全達到標準，字正腔圓，繼續保持！';
+    } else if (score >= 70) {
+      verdict = 'GOOD';
+      isCorrect = true;
+      verdictTitle = '👍 念得很好！發音基本正確 (Gut gemacht)';
+      verdictMessage = '讀得很流暢！大部分詞彙發音正確，僅少數單字略有微小差異，可點擊紅字單獨聆聽複習。';
+    } else if (score >= 50) {
+      verdict = 'NEEDS_WORK';
+      isCorrect = false;
+      verdictTitle = '⚠️ 念得尚可，部分不夠正確 (Noch üben)';
+      verdictMessage = '有辨識到主要詞彙，但有發音不準確或漏字。請重聽自己的錄音並與標準音對比！';
+    } else {
+      verdict = 'INCORRECT';
+      isCorrect = false;
+      verdictTitle = '❌ 念得不正確，建議重新朗讀 (Nicht ganz richtig)';
+      verdictMessage = '發音與目標句差距較大或聲音過小。請先點擊「聽示範發音」多聽幾次，再按麥克風重新朗讀！';
+    }
+
+    return {
+      score,
+      matchedWords,
+      missedWords,
+      verdict,
+      verdictTitle,
+      verdictMessage,
+      isCorrect,
+      wordDetails,
+    };
+  }
+
+  static levenshtein(a: string, b: string): number {
     const matrix: number[][] = [];
     for (let i = 0; i <= b.length; i++) {
       matrix[i] = [i];
@@ -208,5 +291,135 @@ export class SpeechService {
       }
     }
     return matrix[b.length][a.length];
+  }
+}
+
+export interface WordEvaluation {
+  raw: string;
+  clean: string;
+  isCorrect: boolean;
+}
+
+export interface SpeechEvaluationResult {
+  score: number;
+  matchedWords: string[];
+  missedWords: string[];
+  verdict: 'EXCELLENT' | 'GOOD' | 'NEEDS_WORK' | 'INCORRECT';
+  verdictTitle: string;
+  verdictMessage: string;
+  isCorrect: boolean;
+  wordDetails: WordEvaluation[];
+}
+
+/**
+ * Microphone Voice Recorder using MediaRecorder to capture student voice
+ */
+export class VoiceRecorder {
+  private mediaRecorder: MediaRecorder | null = null;
+  private audioChunks: Blob[] = [];
+  private currentStream: MediaStream | null = null;
+
+  static isSupported(): boolean {
+    return (
+      typeof window !== 'undefined' &&
+      typeof navigator !== 'undefined' &&
+      !!navigator.mediaDevices &&
+      !!navigator.mediaDevices.getUserMedia &&
+      typeof MediaRecorder !== 'undefined'
+    );
+  }
+
+  async start(): Promise<boolean> {
+    if (!VoiceRecorder.isSupported()) {
+      return false;
+    }
+
+    try {
+      this.cleanup();
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.currentStream = stream;
+
+      let mimeType = '';
+      if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+        mimeType = 'audio/webm;codecs=opus';
+      } else if (MediaRecorder.isTypeSupported('audio/webm')) {
+        mimeType = 'audio/webm';
+      } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+        mimeType = 'audio/mp4';
+      }
+
+      this.mediaRecorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
+
+      this.mediaRecorder.ondataavailable = (e) => {
+        if (e.data && e.data.size > 0) {
+          this.audioChunks.push(e.data);
+        }
+      };
+
+      this.mediaRecorder.start(100);
+      return true;
+    } catch (err) {
+      console.warn('VoiceRecorder start error:', err);
+      this.cleanup();
+      return false;
+    }
+  }
+
+  stop(): Promise<string | null> {
+    return new Promise((resolve) => {
+      if (!this.mediaRecorder || this.mediaRecorder.state === 'inactive') {
+        this.cleanup();
+        resolve(null);
+        return;
+      }
+
+      this.mediaRecorder.onstop = () => {
+        if (this.audioChunks.length > 0) {
+          const type = this.mediaRecorder?.mimeType || 'audio/webm';
+          const audioBlob = new Blob(this.audioChunks, { type });
+          const audioUrl = URL.createObjectURL(audioBlob);
+          this.cleanup();
+          resolve(audioUrl);
+        } else {
+          this.cleanup();
+          resolve(null);
+        }
+      };
+
+      try {
+        this.mediaRecorder.stop();
+      } catch {
+        this.cleanup();
+        resolve(null);
+      }
+    });
+  }
+
+  cancel() {
+    if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
+      try {
+        this.mediaRecorder.stop();
+      } catch {
+        // ignore
+      }
+    }
+    this.cleanup();
+  }
+
+  private cleanup() {
+    if (this.currentStream) {
+      this.currentStream.getTracks().forEach((track) => {
+        try {
+          track.stop();
+        } catch {
+          // ignore
+        }
+      });
+      this.currentStream = null;
+    }
+    this.mediaRecorder = null;
+    this.audioChunks = [];
   }
 }

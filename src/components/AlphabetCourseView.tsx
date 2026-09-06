@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Volume2,
   Mic,
@@ -7,18 +7,22 @@ import {
   Headphones,
   PenTool,
   CheckCircle2,
+  XCircle,
   RotateCcw,
   Sparkles,
   Search,
   Check,
   Award,
+  Play,
+  Pause,
+  Radio,
 } from 'lucide-react';
 import {
   GERMAN_ALPHABET,
   SPELLING_QUIZ_ITEMS,
   type GermanLetter,
 } from '../data/alphabetData';
-import { SpeechService } from '../services/speechService';
+import { SpeechService, VoiceRecorder } from '../services/speechService';
 import confetti from 'canvas-confetti';
 
 interface Props {
@@ -33,11 +37,18 @@ export const AlphabetCourseView: React.FC<Props> = ({ onBackToRoadmap }) => {
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Speaking state
+  // Speaking state & Voice Recorder
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [spokenTranscript, setSpokenTranscript] = useState<string>('');
   const [speakingScore, setSpeakingScore] = useState<number | null>(null);
   const [speakErrorMessage, setSpeakErrorMessage] = useState<string | null>(null);
+  const [recordedVoiceUrl, setRecordedVoiceUrl] = useState<string | null>(null);
+  const [isPlayingVoice, setIsPlayingVoice] = useState<boolean>(false);
+
+  const voiceRecorderRef = useRef<VoiceRecorder>(new VoiceRecorder());
+  const activeAudioRef = useRef<HTMLAudioElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const recognizerRef = useRef<any>(null);
 
   // Writing / Canvas state
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -62,21 +73,111 @@ export const AlphabetCourseView: React.FC<Props> = ({ onBackToRoadmap }) => {
     return matchesCategory && matchesSearch;
   });
 
+  // Cleanup audio URLs on unmount
+  useEffect(() => {
+    return () => {
+      if (recordedVoiceUrl) {
+        URL.revokeObjectURL(recordedVoiceUrl);
+      }
+      voiceRecorderRef.current.cancel();
+      if (activeAudioRef.current) {
+        activeAudioRef.current.pause();
+      }
+    };
+  }, [recordedVoiceUrl]);
+
+  // Play user's recorded voice
+  const handlePlayUserVoice = () => {
+    if (!recordedVoiceUrl) return;
+    SpeechService.stopSpeaking();
+
+    if (activeAudioRef.current) {
+      activeAudioRef.current.pause();
+      activeAudioRef.current = null;
+      setIsPlayingVoice(false);
+      return;
+    }
+
+    const audio = new Audio(recordedVoiceUrl);
+    activeAudioRef.current = audio;
+    setIsPlayingVoice(true);
+
+    audio.onended = () => {
+      setIsPlayingVoice(false);
+      activeAudioRef.current = null;
+    };
+    audio.onerror = () => {
+      setIsPlayingVoice(false);
+      activeAudioRef.current = null;
+    };
+
+    audio.play().catch(() => {
+      setIsPlayingVoice(false);
+      activeAudioRef.current = null;
+    });
+  };
+
   // Play letter pronunciation
   const handlePlayLetter = (letter: GermanLetter) => {
-    // For German letters, speak the letter name or phoneme
+    if (activeAudioRef.current) {
+      activeAudioRef.current.pause();
+      activeAudioRef.current = null;
+      setIsPlayingVoice(false);
+    }
     SpeechService.speak(letter.char, 0.85);
   };
 
   const handlePlayWord = (word: string) => {
+    if (activeAudioRef.current) {
+      activeAudioRef.current.pause();
+      activeAudioRef.current = null;
+      setIsPlayingVoice(false);
+    }
     SpeechService.speak(word, 0.9);
   };
 
+  const finishLetterRecording = async (targetChar: string, resultText: string) => {
+    setIsRecording(false);
+    const audioUrl = await voiceRecorderRef.current.stop();
+    if (audioUrl) {
+      setRecordedVoiceUrl(audioUrl);
+    }
+
+    const cleanText = resultText.trim().toLowerCase();
+    const cleanTarget = targetChar.trim().toLowerCase();
+    const letterName = selectedLetter.name.toLowerCase();
+
+    if (
+      cleanText.includes(cleanTarget) ||
+      cleanText.includes(letterName) ||
+      cleanText === cleanTarget
+    ) {
+      setSpeakingScore(100);
+      confetti({ particleCount: 30, spread: 60, origin: { y: 0.7 } });
+    } else if (cleanText.length > 0) {
+      const scoreObj = SpeechService.calculateScore(targetChar, resultText);
+      setSpeakingScore(scoreObj.score > 50 ? scoreObj.score : 65);
+    } else {
+      setSpeakingScore(30);
+    }
+  };
+
   // Start speech recognition for letter
-  const handleStartSpeaking = (targetChar: string) => {
+  const handleStartSpeaking = async (targetChar: string) => {
     setSpeakErrorMessage(null);
     setSpokenTranscript('');
     setSpeakingScore(null);
+
+    if (recordedVoiceUrl) {
+      URL.revokeObjectURL(recordedVoiceUrl);
+      setRecordedVoiceUrl(null);
+    }
+    if (activeAudioRef.current) {
+      activeAudioRef.current.pause();
+      activeAudioRef.current = null;
+      setIsPlayingVoice(false);
+    }
+    SpeechService.stopSpeaking();
 
     if (!SpeechService.isRecognitionSupported()) {
       setSpeakErrorMessage('您的瀏覽器未支援語音辨識，請使用 Chrome / Edge 或直接點擊發音進行模仿！');
@@ -84,44 +185,46 @@ export const AlphabetCourseView: React.FC<Props> = ({ onBackToRoadmap }) => {
     }
 
     setIsRecording(true);
+
+    // Start audio recorder concurrently
+    voiceRecorderRef.current.start().catch((err) => {
+      console.warn('VoiceRecorder start error', err);
+    });
+
+    let liveText = '';
     const recognizer = SpeechService.createRecognizer(
       (resultText, isFinal) => {
+        liveText = resultText;
         setSpokenTranscript(resultText);
         if (isFinal) {
-          setIsRecording(false);
-          const cleanText = resultText.trim().toLowerCase();
-          const cleanTarget = targetChar.trim().toLowerCase();
-          const letterName = selectedLetter.name.toLowerCase();
-
-          // Scoring logic: matches letter name, char, or phonetic
-          if (
-            cleanText.includes(cleanTarget) ||
-            cleanText.includes(letterName) ||
-            cleanText === cleanTarget
-          ) {
-            setSpeakingScore(100);
-            confetti({ particleCount: 30, spread: 60, origin: { y: 0.7 } });
-          } else {
-            // Partial heuristic
-            const score = SpeechService.calculateScore(targetChar, resultText);
-            setSpeakingScore(score.score > 50 ? score.score : 75);
-          }
+          finishLetterRecording(targetChar, resultText);
         }
       },
       (err) => {
         setSpeakErrorMessage(err);
-        setIsRecording(false);
+        finishLetterRecording(targetChar, liveText);
       },
       () => {
-        setIsRecording(false);
+        finishLetterRecording(targetChar, liveText);
       }
     );
 
+    recognizerRef.current = recognizer;
     if (recognizer) {
       try {
         recognizer.start();
       } catch {
         setIsRecording(false);
+      }
+    }
+  };
+
+  const handleStopLetterRecordingManually = () => {
+    if (recognizerRef.current) {
+      try {
+        recognizerRef.current.stop();
+      } catch {
+        // ignore
       }
     }
   };
@@ -526,7 +629,7 @@ export const AlphabetCourseView: React.FC<Props> = ({ onBackToRoadmap }) => {
                     <button
                       onClick={() => handleStartSpeaking(selectedLetter.char)}
                       disabled={isRecording}
-                      className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto shadow-lg transition active:scale-95 ${
+                      className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto shadow-lg transition active:scale-95 cursor-pointer ${
                         isRecording
                           ? 'bg-rose-500 text-white animate-pulse ring-4 ring-rose-200'
                           : 'bg-indigo-600 hover:bg-indigo-700 text-white'
@@ -537,31 +640,165 @@ export const AlphabetCourseView: React.FC<Props> = ({ onBackToRoadmap }) => {
 
                     <div>
                       <p className="text-xs font-bold text-slate-700">
-                        {isRecording ? '正在聆聽您的發音...請清楚唸出字母！' : '點擊麥克風開始錄音跟讀'}
+                        {isRecording ? '正在聆聽並錄下您的發音...請清楚唸出字母！' : '點擊麥克風開始錄音跟讀'}
                       </p>
                       <p className="text-[11px] text-slate-400 mt-0.5">
-                        支援辨識字母名稱（如 „{selectedLetter.name}“）或音素
+                        支援辨識字母名稱（如 „{selectedLetter.name}“）或發音音素
                       </p>
                     </div>
 
-                    {spokenTranscript && (
-                      <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs max-w-xs mx-auto">
-                        <span className="text-slate-400">辨識結果：</span>
-                        <strong className="text-slate-800 ml-1">„{spokenTranscript}“</strong>
-                      </div>
+                    {isRecording && (
+                      <button
+                        onClick={handleStopLetterRecordingManually}
+                        className="mt-2 px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-xs transition active:scale-95 flex items-center space-x-1.5 mx-auto cursor-pointer"
+                      >
+                        <Radio className="w-3.5 h-3.5 animate-pulse" />
+                        <span>讀完了（結束錄音並判定）</span>
+                      </button>
                     )}
 
-                    {speakingScore !== null && (
-                      <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                        <span>發音匹配度：{speakingScore}%！太棒了！</span>
-                      </div>
-                    )}
-
-                    {speakErrorMessage && (
-                      <p className="text-xs text-rose-500 px-4">{speakErrorMessage}</p>
-                    )}
                   </div>
+
+                  {/* Results & Recording Feedback Area */}
+                  {(speakingScore !== null || spokenTranscript || recordedVoiceUrl) && (
+                    <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-200">
+                      {/* 1. Verdict Card (念得好不好、正不正確) */}
+                      {speakingScore !== null && (
+                        <div
+                          className={`p-4 rounded-2xl border text-left transition shadow-xs ${
+                            speakingScore >= 80
+                              ? 'bg-emerald-50/90 border-emerald-200 text-emerald-950'
+                              : speakingScore >= 60
+                              ? 'bg-amber-50/90 border-amber-200 text-amber-950'
+                              : 'bg-rose-50/90 border-rose-200 text-rose-950'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-2">
+                              {speakingScore >= 80 ? (
+                                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                              ) : speakingScore >= 60 ? (
+                                <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0" />
+                              ) : (
+                                <XCircle className="w-5 h-5 text-rose-600 shrink-0" />
+                              )}
+                              <span className="font-extrabold text-sm">
+                                {speakingScore >= 80
+                                  ? '🌟 念得非常好！發音正確地道 (Ausgezeichnet)'
+                                  : speakingScore >= 60
+                                  ? '⚠️ 念得尚可，發音基本正確 (Gut gemacht)'
+                                  : '❌ 發音不夠準確，請再試一次 (Nicht ganz richtig)'}
+                              </span>
+                            </div>
+
+                            <span
+                              className={`px-2.5 py-0.5 rounded-full text-xs font-black shrink-0 ${
+                                speakingScore >= 80
+                                  ? 'bg-emerald-600 text-white'
+                                  : speakingScore >= 60
+                                  ? 'bg-amber-600 text-white'
+                                  : 'bg-rose-600 text-white'
+                              }`}
+                            >
+                              {speakingScore >= 80
+                                ? '判定：正確'
+                                : speakingScore >= 60
+                                ? '判定：部分正確'
+                                : '判定：不正確'}
+                            </span>
+                          </div>
+
+                          <p className="text-xs mt-2 leading-relaxed opacity-90">
+                            {speakingScore >= 80
+                              ? `太棒了！您的發音與音準達到標準（匹配度：${speakingScore}%）。`
+                              : speakingScore >= 60
+                              ? `基本辨識出讀音（匹配度：${speakingScore}%），建議點擊標準示範多聽幾次嘴型舌位差別。`
+                              : `辨識差距較大或未被清楚辨識（匹配度：${speakingScore}%），請聽完示範發音後再次朗讀。`}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* 2. Dual Audio Comparison: Student's Voice vs. Native Letter */}
+                      <div className="p-4 bg-slate-900 text-white rounded-2xl shadow-md space-y-2.5">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="font-bold text-amber-300 flex items-center space-x-1.5">
+                            <Headphones className="w-4 h-4" />
+                            <span>雙軌錄音對比（聽自己的發音 vs. 字母原音）</span>
+                          </span>
+                          <span className="text-[10px] text-slate-400">交叉聆聽</span>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                          {/* Student's Recording Playback */}
+                          <div className="p-2.5 rounded-xl bg-white/10 border border-white/10 flex flex-col justify-between">
+                            <span className="text-[11px] text-slate-300 font-bold mb-1.5 flex items-center space-x-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                              <span>我的發音錄音</span>
+                            </span>
+                            {recordedVoiceUrl ? (
+                              <button
+                                onClick={handlePlayUserVoice}
+                                className={`w-full py-2 px-3 rounded-lg text-xs font-bold flex items-center justify-center space-x-1.5 transition active:scale-95 cursor-pointer ${
+                                  isPlayingVoice
+                                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                                    : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                                }`}
+                              >
+                                {isPlayingVoice ? (
+                                  <>
+                                    <Pause className="w-3.5 h-3.5 fill-current" />
+                                    <span>暫停播放</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Play className="w-3.5 h-3.5 fill-current" />
+                                    <span>🎧 播放我的錄音</span>
+                                  </>
+                                )}
+                              </button>
+                            ) : (
+                              <div className="py-1 text-center text-[11px] text-slate-400">
+                                （未擷取到音訊檔案）
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Standard Model Pronunciation */}
+                          <div className="p-2.5 rounded-xl bg-white/10 border border-white/10 flex flex-col justify-between">
+                            <span className="text-[11px] text-slate-300 font-bold mb-1.5 flex items-center space-x-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                              <span>字母標準發音</span>
+                            </span>
+                            <button
+                              onClick={() => handlePlayLetter(selectedLetter)}
+                              className="w-full py-2 px-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center justify-center space-x-1.5 transition active:scale-95 cursor-pointer"
+                            >
+                              <Volume2 className="w-3.5 h-3.5" />
+                              <span>🔊 聆聽標準原音</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 3. Recognized Transcript & Re-record */}
+                      <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between gap-3 text-xs">
+                        <div>
+                          <span className="text-slate-400">系統聽到的發音：</span>
+                          <strong className="text-slate-800 ml-1">
+                            „{spokenTranscript || '(無聲音)'}“
+                          </strong>
+                        </div>
+
+                        <button
+                          onClick={() => handleStartSpeaking(selectedLetter.char)}
+                          className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-bold flex items-center space-x-1 text-xs shrink-0 cursor-pointer"
+                        >
+                          <RotateCcw className="w-3 h-3" />
+                          <span>重新朗讀</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
