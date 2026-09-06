@@ -6,6 +6,7 @@ import { week5Lessons } from './lessons/week5';
 import { week6Lessons } from './lessons/week6';
 import { week7Lessons } from './lessons/week7';
 import { week8Lessons } from './lessons/week8';
+import { week9Lessons } from './lessons/week9';
 
 export interface StageMetadata {
   id: CefrLevel;
@@ -783,6 +784,7 @@ const detailedLessons: Record<number, DayLesson> = {
   ...week6Lessons,
   ...week7Lessons,
   ...week8Lessons,
+  ...week9Lessons,
 };
 
 // 365-Day Generator that generates standard Goethe curriculum templates for all days 1..365
