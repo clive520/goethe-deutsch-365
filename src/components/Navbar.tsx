@@ -35,84 +35,73 @@ export const Navbar: React.FC<Props> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Title */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('journey')}>
-            <div className="relative flex flex-col items-center justify-center w-10 h-10 rounded-xl bg-slate-950 text-white shadow-md overflow-hidden group">
+          <div className="flex items-center space-x-2.5 cursor-pointer shrink-0" onClick={() => setActiveTab('journey')}>
+            <div className="relative flex flex-col items-center justify-center w-9 h-9 rounded-xl bg-slate-950 text-white shadow-md overflow-hidden shrink-0">
               <span className="font-extrabold text-xs tracking-wider text-amber-400">GZ</span>
-              <span className="text-[10px] font-bold text-slate-300">365</span>
+              <span className="text-[9px] font-bold text-slate-300 leading-none">365</span>
               {/* German flag strip */}
-              <div className="absolute bottom-0 w-full h-1.5 flex">
+              <div className="absolute bottom-0 w-full h-1 flex">
                 <div className="w-1/3 bg-black"></div>
                 <div className="w-1/3 bg-red-600"></div>
                 <div className="w-1/3 bg-amber-400"></div>
               </div>
             </div>
-            <div>
-              <div className="flex items-center space-x-1.5">
-                <span className="font-bold text-lg text-slate-900 tracking-tight">
-                  德語歌德 365 檢定養成網
-                </span>
-                <span className="px-2 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300 rounded-full">
-                  Goethe-Zertifikat
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 hidden sm:block">一年 365 天循序漸進攻克 A1 - B1 認證</p>
-            </div>
+            <span className="font-bold text-base text-slate-900 tracking-tight whitespace-nowrap">
+              德語 365
+            </span>
           </div>
 
           {/* Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5 shrink-0">
             <button
               onClick={() => setActiveTab('journey')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition ${
                 activeTab === 'journey'
-                  ? 'bg-indigo-50 text-indigo-700 shadow-xs'
+                  ? 'bg-indigo-50 text-indigo-700 shadow-xs font-semibold'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Map className="w-4 h-4" />
-              <span>365 旅程地圖</span>
+              <span>地圖</span>
             </button>
 
             <button
               onClick={() => setActiveTab('alphabet')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition ${
                 activeTab === 'alphabet'
                   ? 'bg-amber-50 text-amber-800 font-bold shadow-xs border border-amber-200'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Type className="w-4 h-4 text-amber-500" />
-              <span>德語字母</span>
-              <span className="px-1.5 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-800 rounded-md">
-                4合1特訓
-              </span>
+              <span>字母</span>
             </button>
 
             <button
               onClick={() => setActiveTab('lesson')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition ${
                 activeTab === 'lesson'
-                  ? 'bg-indigo-50 text-indigo-700 shadow-xs'
+                  ? 'bg-indigo-50 text-indigo-700 shadow-xs font-semibold'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <BookOpen className="w-4 h-4" />
-              <span>今日課程</span>
+              <span>課程</span>
               {user && (
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               )}
             </button>
 
             <button
               onClick={() => setActiveTab('vocab')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition ${
                 activeTab === 'vocab'
-                  ? 'bg-indigo-50 text-indigo-700 shadow-xs'
+                  ? 'bg-indigo-50 text-indigo-700 shadow-xs font-semibold'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <BookmarkCheck className="w-4 h-4" />
-              <span>個人生詞本</span>
+              <span>生詞</span>
               {user && user.savedVocabIds?.length > 0 && (
                 <span className="px-1.5 py-0.2 text-[10px] font-bold bg-slate-200 text-slate-700 rounded-full">
                   {user.savedVocabIds.length}
@@ -122,33 +111,35 @@ export const Navbar: React.FC<Props> = ({
 
             <button
               onClick={() => setActiveTab('guide')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition ${
                 activeTab === 'guide'
-                  ? 'bg-indigo-50 text-indigo-700 shadow-xs'
+                  ? 'bg-indigo-50 text-indigo-700 shadow-xs font-semibold'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Award className="w-4 h-4" />
-              <span>歌德檢定攻略</span>
+              <span>攻略</span>
             </button>
           </nav>
 
           {/* User Progress Badges & Google Login */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 shrink-0">
             {user ? (
               <>
                 {/* Streak Badge */}
                 <div
-                  className="flex items-center space-x-1.5 px-3 py-1.5 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-full shadow-2xs"
+                  className="flex items-center space-x-1 px-2.5 py-1 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-full text-xs font-bold text-orange-800 whitespace-nowrap"
                   title="連續打卡天數"
                 >
-                  <Flame className="w-4 h-4 text-orange-500 fill-orange-500 animate-bounce" />
-                  <span className="text-xs font-bold text-orange-800">{user.streak} 天連勝</span>
+                  <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500" />
+                  <span>{user.streak} 天</span>
                 </div>
 
                 {/* Progress indicator */}
-                <div className="hidden lg:flex items-center space-x-2 text-xs font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full">
-                  <span>進度：</span>
+                <div
+                  className="hidden lg:flex items-center space-x-1 text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap"
+                  title="365 天完成進度"
+                >
                   <span className="font-bold text-indigo-600">{user.completedDays.length}</span>
                   <span>/ 365 天</span>
                 </div>
