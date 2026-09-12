@@ -1,13 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { RoadmapView } from './components/RoadmapView';
 import { DailyLessonView } from './components/DailyLessonView';
-import { VocabularyNotebook } from './components/VocabularyNotebook';
-import { ExamGuideView } from './components/ExamGuideView';
-import { AlphabetCourseView } from './components/AlphabetCourseView';
 import { firebaseService } from './services/firebase';
-import { getLessonByDay } from './data/curriculumData';
-import type { UserProgress, SavedWordCard } from './types/curriculum';
+import { loadLessonByDay, getCachedLessonByDay } from './data/curriculumData';
+import type { UserProgress, SavedWordCard, DayLesson } from './types/curriculum';
+
+// Code-split secondary views on demand
+const AlphabetCourseView = lazy(() =>
+  import('./components/AlphabetCourseView').then((m) => ({ default: m.AlphabetCourseView }))
+);
+const ExamGuideView = lazy(() =>
+  import('./components/ExamGuideView').then((m) => ({ default: m.ExamGuideView }))
+);
+const VocabularyNotebook = lazy(() =>
+  import('./components/VocabularyNotebook').then((m) => ({ default: m.VocabularyNotebook }))
+);
+
 
 const LOCAL_SAVED_WORDS_KEY = 'deutsch_cert_saved_words_list';
 
@@ -201,7 +210,37 @@ export function App() {
     firebaseService.saveProgress(updatedUser);
   };
 
-  const currentLesson = getLessonByDay(selectedDay);
+  const [currentLesson, setCurrentLesson] = useState<DayLesson | null>(() => getCachedLessonByDay(selectedDay));
+  const [isLoadingLesson, setIsLoadingLesson] = useState<boolean>(false);
+
+  // Dynamically load lesson data when selectedDay changes
+  useEffect(() => {
+    let isCancelled = false;
+    const cached = getCachedLessonByDay(selectedDay);
+    if (cached) {
+      setCurrentLesson(cached);
+      return;
+    }
+
+    setIsLoadingLesson(true);
+    loadLessonByDay(selectedDay)
+      .then((lesson) => {
+        if (!isCancelled) {
+          setCurrentLesson(lesson);
+          setIsLoadingLesson(false);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to load lesson for day', selectedDay, err);
+        if (!isCancelled) {
+          setIsLoadingLesson(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [selectedDay]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
@@ -216,49 +255,66 @@ export function App() {
 
       {/* Main View Area */}
       <main className="flex-1">
-        {activeTab === 'journey' && (
-          <RoadmapView
-            user={user}
-            onSelectDay={handleSelectDay}
-            onOpenAlphabet={() => {
-              setActiveTab('alphabet');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          />
-        )}
+        <Suspense
+          fallback={
+            <div className="max-w-4xl mx-auto px-4 py-24 flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-slate-600 text-sm font-medium">頁面載入中...</p>
+            </div>
+          }
+        >
+          {activeTab === 'journey' && (
+            <RoadmapView
+              user={user}
+              onSelectDay={handleSelectDay}
+              onOpenAlphabet={() => {
+                setActiveTab('alphabet');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          )}
 
-        {activeTab === 'alphabet' && (
-          <AlphabetCourseView
-            onBackToRoadmap={() => {
-              setActiveTab('journey');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          />
-        )}
+          {activeTab === 'alphabet' && (
+            <AlphabetCourseView
+              onBackToRoadmap={() => {
+                setActiveTab('journey');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          )}
 
-        {activeTab === 'lesson' && (
-          <DailyLessonView
-            lesson={currentLesson}
-            onSelectDay={handleSelectDay}
-            user={user}
-            onCompleteDay={handleCompleteDay}
-            onSaveVocab={handleSaveVocab}
-          />
-        )}
+          {activeTab === 'lesson' && (
+            isLoadingLesson || !currentLesson ? (
+              <div className="max-w-4xl mx-auto px-4 py-24 flex flex-col items-center justify-center space-y-4 text-center">
+                <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                <p className="text-slate-700 font-bold text-lg">正在載入 Day {selectedDay} 德語完整教案...</p>
+                <p className="text-slate-500 text-sm">德意志歌德 365 檢定直通車</p>
+              </div>
+            ) : (
+              <DailyLessonView
+                lesson={currentLesson}
+                onSelectDay={handleSelectDay}
+                user={user}
+                onCompleteDay={handleCompleteDay}
+                onSaveVocab={handleSaveVocab}
+              />
+            )
+          )}
 
-        {activeTab === 'vocab' && (
-          <VocabularyNotebook
-            user={user}
-            savedWordsList={savedWordsList}
-            onRemoveWord={handleRemoveWord}
-            onNavigateToLesson={() => {
-              setActiveTab('lesson');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          />
-        )}
+          {activeTab === 'vocab' && (
+            <VocabularyNotebook
+              user={user}
+              savedWordsList={savedWordsList}
+              onRemoveWord={handleRemoveWord}
+              onNavigateToLesson={() => {
+                setActiveTab('lesson');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          )}
 
-        {activeTab === 'guide' && <ExamGuideView />}
+          {activeTab === 'guide' && <ExamGuideView />}
+        </Suspense>
       </main>
 
       {/* Footer */}

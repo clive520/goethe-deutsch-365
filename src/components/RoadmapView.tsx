@@ -10,7 +10,8 @@ import {
   ArrowRight,
   TrendingUp,
 } from 'lucide-react';
-import { STAGES, getLessonByDay } from '../data/curriculumData';
+import { STAGES } from '../data/curriculumData';
+import { getDaySummary } from '../data/curriculumManifest';
 import type { CefrLevel, UserProgress } from '../types/curriculum';
 
 interface Props {
@@ -41,9 +42,9 @@ export const RoadmapView: React.FC<Props> = ({ user, onSelectDay, onOpenAlphabet
     // Filter search query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
-      const lesson = getLessonByDay(day);
+      const summary = getDaySummary(day);
       const matchesDay = day.toString() === q || `day ${day}`.includes(q);
-      const matchesTitle = lesson.title.toLowerCase().includes(q) || lesson.germanTitle.toLowerCase().includes(q);
+      const matchesTitle = summary.title.toLowerCase().includes(q) || summary.germanTitle.toLowerCase().includes(q) || summary.theme.toLowerCase().includes(q);
       return matchesDay || matchesTitle;
     }
 
@@ -252,7 +253,7 @@ export const RoadmapView: React.FC<Props> = ({ user, onSelectDay, onOpenAlphabet
           {filteredDays.map((day) => {
             const isFinished = completedDays.includes(day);
             const isToday = day === currentDay;
-            const lesson = getLessonByDay(day);
+            const summary = getDaySummary(day);
 
             let cardStyle =
               'bg-white border-slate-200 hover:border-slate-400 hover:shadow-md';
@@ -295,13 +296,13 @@ export const RoadmapView: React.FC<Props> = ({ user, onSelectDay, onOpenAlphabet
                   </div>
 
                   <p className="text-xs font-bold text-slate-800 line-clamp-2 mt-2 leading-tight group-hover:text-indigo-600 transition">
-                    {lesson.title.replace(`Day ${day}: `, '')}
+                    {summary.title.replace(`Day ${day}: `, '')}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-100">
-                  <span className="font-semibold">{lesson.stage}</span>
-                  <span>W{lesson.week}</span>
+                  <span className="font-semibold">{summary.stage}</span>
+                  <span>W{summary.week}</span>
                 </div>
               </div>
             );
