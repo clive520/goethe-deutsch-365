@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
+import { PWAInstallBanner, OfflineStatusBar } from './components/PWAInstallBanner';
 import { RoadmapView } from './components/RoadmapView';
 import { DailyLessonView } from './components/DailyLessonView';
 import { firebaseService } from './services/firebase';
@@ -244,6 +245,9 @@ export function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
+      {/* Offline Status Alert */}
+      <OfflineStatusBar />
+
       {/* Navigation Header */}
       <Navbar
         activeTab={activeTab}
@@ -375,6 +379,9 @@ export function App() {
           </p>
         </div>
       </footer>
+
+      {/* PWA Mobile Installation Prompt & iOS Guide */}
+      <PWAInstallBanner />
     </div>
   );
 }

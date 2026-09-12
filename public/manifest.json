@@ -1,0 +1,91 @@
+{
+  "id": "/?source=pwa",
+  "name": "德語歌德 365 檢定直通車",
+  "short_name": "歌德德語365",
+  "description": "專為歌德檢定設計的 365 天全手作系統化學習平台，完整涵蓋 A1、A2、B1 到全真應試技巧，支援離線複習與語音辨識。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "lang": "zh-Hant-TW",
+  "categories": [
+    "education",
+    "books",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "365 學習地圖",
+      "short_name": "學習地圖",
+      "description": "查看 365 天學習歷程與檢定進度",
+      "url": "/?tab=journey",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "今日課堂",
+      "short_name": "今日課堂",
+      "description": "進入今日德語課堂聽說讀寫練習",
+      "url": "/?tab=lesson",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "生詞抽認卡",
+      "short_name": "生詞卡",
+      "description": "複習個人收藏的德語單字卡",
+      "url": "/?tab=vocab",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "德語 30 字母特訓",
+      "short_name": "發音特訓",
+      "description": "德語發音規律、變音與雙母音",
+      "url": "/?tab=alphabet",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
